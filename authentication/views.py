@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from journaluser.models import BulletJournalUser
 
 
 def index(request):
@@ -24,11 +25,17 @@ def index(request):
 
 
 def register(request):
+    print(request)
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
+            print(form.is_valid())
             data = form.cleaned_data
-            """Need a model"""
+            my_user = BulletJournalUser.objects.create(
+                username=data['username'],
+                password=data["password1"],
+                email=data['email'],
+            )
             login(request, my_user)
             return redirect("/test/")
 
