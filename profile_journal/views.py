@@ -32,3 +32,18 @@ class AddAssignmentView(LoginRequiredMixin, View):
                         user_created=request.user,
                     )
         return HttpResponseRedirect(reverse('journal'))
+
+
+class AssignmentDetailView(LoginRequiredMixin, View):
+    def get(self, request, assignment_id):
+        assignment = Assignments.objects.get(id=assignment_id)
+        return render(request, 'assignment_detail.html', {'assignment': assignment})
+
+
+class LessonAssignmentView(LoginRequiredMixin, View):
+    def get(self, request, assignment_id):
+        assignment = Assignments.objects.get(id=assignment_id)
+        assignment.assignment_type = 'Lesson'
+        assignment.save()
+        return redirect(f'/assignment_detail/{assignment_id}')
+
