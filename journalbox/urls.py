@@ -18,5 +18,6 @@ from profile_journal.views import JournalPageView
 
 urlpatterns = [
     path('auth/', include('authentication.urls')),
+    path('journal/', JournalPageView.as_view()),
     path('admin/', admin.site.urls),
 ]
