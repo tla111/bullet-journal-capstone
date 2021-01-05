@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, HttpResponseRedirect
+from django.shortcuts import render, reverse, HttpResponseRedirect, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
@@ -47,3 +47,34 @@ class LessonAssignmentView(LoginRequiredMixin, View):
         assignment.save()
         return redirect(f'/assignment_detail/{assignment_id}')
 
+
+class ActivityAssignmentView(LoginRequiredMixin, View):
+    def get(self, request, assignment_id):
+        assignment = Assignments.objects.get(id=assignment_id)
+        assignment.assignment_type = 'Activity'
+        assignment.save()
+        return redirect(f'/assignment_detail/{assignment_id}')
+
+
+class QuizAssignmentView(LoginRequiredMixin, View):
+    def get(self, request, assignment_id):
+        assignment = Assignments.objects.get(id=assignment_id)
+        assignment.assignment_type = 'Quiz'
+        assignment.save()
+        return redirect(f'/assignment_detail/{assignment_id}')
+
+
+class AssessmentAssignmentView(LoginRequiredMixin, View):
+    def get(self, request, assignment_id):
+        assignment = Assignments.objects.get(id=assignment_id)
+        assignment.assignment_type = 'Assessment'
+        assignment.save()
+        return redirect(f'/assignment_detail/{assignment_id}')
+
+
+class CompletedAssignmentView(LoginRequiredMixin, View):
+    def get(self, request, assignment_id):
+        assignment = Assignments.objects.get(id=assignment_id)
+        assignment.assignment_type = 'Completed'
+        assignment.save()
+        return redirect(f'/assignment_detail/{assignment_id}')
