@@ -14,10 +14,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from profile_journal.views import JournalPageView
+from profile_journal.views import JournalPageView, AddAssignmentView
 
 urlpatterns = [
     path('auth/', include('authentication.urls')),
-    path('journal/', JournalPageView.as_view()),
+    path('journal/', JournalPageView.as_view(), name='journal'),
+    path('add_assignment/', AddAssignmentView.as_view()),
     path('admin/', admin.site.urls),
 ]
