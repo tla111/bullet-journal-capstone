@@ -1,5 +1,155 @@
-{% extends 'base.html' %}
+{% comment %} {% load static %} {% endcomment %}
 
-{% block content %}
-<h1>Journal Page</h1>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+
+    {% comment %} <link rel="stylesheet" href="{% static 'tracker.css' %}" /> {% endcomment %}
+
+    <title>Journal</title>
+  </head>
+  <body>  
+
+
+  <div class="card user_card" style="width: 75rem; height: 10rem">
+    <div class="card-body card_body_contain">
+      <h3>Profile Section</h3>
+      <h4>Username: {{user.get_username}}</h4>
+      <a href="/add_assignment/">
+        <button class="btn btn-primary mt-1">Add Assignment</button>
+      </a>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+
+  <div class="tables_container">
+    <table class="table table-striped table-info">
+      <thead class="thead-info">
+        <tr>
+          <th scope="col">Assignment</th>
+          <th scope="col">Description</th>
+          <th scope="col">Type</th>
+          <th scope="col">Date Field</th>
+          <th scope="col">Update Ticket</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for assignment in assignments %} 
+        {% if assignment.assignment_type == "New" %}
+        <tr>
+          <td>{{assignment.title}}</td>
+          <td>{{assignment.description}}</td>
+          <td>{{assignment.assignment_type}}</td>
+          <td>{{assignment.date_filed}}</td>
+          <td>
+            <button class="update_button">
+              <a href="/assignment_detail/{{assignment.id}}/">Update</a>
+            </button>
+          </td>
+        </tr>
+        {%endif%} 
+        {% endfor %}
+
+        {% for assignment in assignments %} 
+        {% if assignment.assignment_type == "Lesson" %}
+        <tr>
+          <td>{{assignment.title}}</td>
+          <td>{{assignment.description}}</td>
+          <td>{{assignment.assignment_type}}</td>
+          <td>{{assignment.date_filed}}</td>
+          <td>
+            <button class="update_button">
+              <a href="/assignment_detail/{{assignment.id}}/">Update</a>
+            </button>
+          </td>
+        </tr>
+        {%endif%} 
+        {% endfor %}
+
+        {% for assignment in assignments %} 
+        {% if assignment.assignment_type == "Activity" %}
+        <tr>
+          <td>{{assignment.title}}</td>
+          <td>{{assignment.description}}</td>
+          <td>{{assignment.assignment_type}}</td>
+          <td>{{assignment.date_filed}}</td>
+          <td>
+            <button class="update_button">
+              <a href="/assignment_detail/{{assignment.id}}/">Update</a>
+            </button>
+          </td>
+        </tr>
+        {%endif%} 
+        {% endfor %}
+
+        {% for assignment in assignments %} 
+        {% if assignment.assignment_type == "Quiz" %}
+        <tr>
+          <td>{{assignment.title}}</td>
+          <td>{{assignment.description}}</td>
+          <td>{{assignment.assignment_type}}</td>
+          <td>{{assignment.date_filed}}</td>
+          <td>
+            <button class="update_button">
+              <a href="/assignment_detail/{{assignment.id}}/">Update</a>
+            </button>
+          </td>
+        </tr>
+        {%endif%} 
+        {% endfor %}
+
+        {% for assignment in assignments %} 
+        {% if assignment.assignment_type == "Assessment" %}
+        <tr>
+          <td>{{assignment.title}}</td>
+          <td>{{assignment.description}}</td>
+          <td>{{assignment.assignment_type}}</td>
+          <td>{{assignment.date_filed}}</td>
+          <td>
+            <button class="update_button">
+              <a href="/assignment_detail/{{assignment.id}}/">Update</a>
+            </button>
+          </td>
+        </tr>
+        {%endif%} 
+        {% endfor %}
+
+        {% for assignment in assignments %} 
+        {% if assignment.assignment_type == "Completed" %}
+        <tr>
+          <td>{{assignment.title}}</td>
+          <td>{{assignment.description}}</td>
+          <td>{{assignment.assignment_type}}</td>
+          <td>{{assignment.date_filed}}</td>
+          <td>
+            <button class="update_button">
+              <a href="/assignment_detail/{{assignment.id}}/">Update</a>
+            </button>
+          </td>
+        </tr>
+        {%endif%} 
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+
+
+  </body>
+</html>
