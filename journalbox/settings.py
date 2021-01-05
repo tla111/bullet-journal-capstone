@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authentication'
+    'authentication',
+    'blog',
+    'journaluser',
+    'profile_journal'
 ]
 
 MIDDLEWARE = [
@@ -121,4 +124,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = '/authentication/login/'
-AUTH_USER_MODEL = "twitteruser.ProfileModel"
+AUTH_USER_MODEL = "journaluser.BulletJournalUser"
