@@ -17,7 +17,6 @@ from django.urls import path, include
 from profile_journal.views import JournalPageView
 
 urlpatterns = [
-    path('', include('authentication.urls')),
-    # path('journal/', JournalPageView.as_view(), name='journal'),
+    path('auth/', include('authentication.urls')),
     path('admin/', admin.site.urls),
 ]
