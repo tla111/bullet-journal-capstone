@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
+
+    <title>Assignment</title>
+  </head>
+  <style>
+    a {
+      text-decoration: none !important;
+    }
+  </style>
+  <body>
+    
+  <div class="tables_container">
+    <table class="table table-striped table-dark">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Assignment</th>
+        <th scope="col">Description</th>
+        <th scope="col">Type</th>
+        <th scope="col">Date Field</th>
+        <th scope="col">Delete Ticket</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>{{assignment.title}}</td>
+          <td>{{assignment.description}}</td>
+          <td>{{assignment.assignment_type}}</td>
+          <td>{{assignment.date_filed}}</td>
+        <td>
+          <button class='btn btn-danger'>
+            <a href='/remove_assignment/{{assignment.id}}'>Delete</a>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+    
+  <div class="button_container">
+    <button class="btn btn-light">
+      <a href="/lesson_assignment/{{assignment.id}}/">Lesson</a>
+    </button>
+    <button class="btn btn-light">
+      <a href="/activity_assignment/{{assignment.id}}/">Activity</a>
+    </button>
+    <button class="btn btn-light">
+      <a href="/quiz_assignment/{{assignment.id}}/">Quiz</a>
+    </button>
+    <button class="btn btn-light">
+      <a href="/assessment_assignment/{{assignment.id}}/">Assessment</a>
+    </button>
+     <button class="btn btn-light">
+      <a href="/completed_assignment/{{assignment.id}}/">Completed</a>
+    </button>
+    <button class="btn btn-light">
+      <a href="/journal/">Return to Journal</a>
+    </button>
+  </div>  
+
+   
+  </body>
+</html>
