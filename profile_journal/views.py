@@ -9,6 +9,6 @@ from .models import Assignments
 
 class JournalPageView(LoginRequiredMixin, View):
     def get(self, request):
-        kenzie_assignments = Assignments.objects.get(user_created=request.user)
+        kenzie_assignments = Assignments.objects.filter(user_created=request.user)
         return render(request, "journal_profile.html", {'assignments': kenzie_assignments} )
 
