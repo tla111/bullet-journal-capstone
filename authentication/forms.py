@@ -8,6 +8,11 @@ class RegisterForm(UserCreationForm):
         model = BulletJournalUser
         fields = ['username', 'email', 'password1', 'password2']
 
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'input-block', 'id': "paperInputs3"}),
+            'password': forms.TextInput(attrs={'class': 'input-block'})
+        }
+
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=100)

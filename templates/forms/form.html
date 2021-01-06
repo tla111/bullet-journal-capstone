@@ -28,8 +28,16 @@
 {% block  content %} {% endcomment %}
  {% comment %} <form method="POST" action="">
             {% csrf_token %}
+<<<<<<< HEAD
 </form> {% endcomment %}
 
 {% comment %} {% endblock  %} {% endcomment %}
 
 
+=======
+           {{form.as_p}}
+           <input type="submit" value="Submit">
+</form>
+
+{% endblock  %}
+>>>>>>> 2ac35f40c27d5c3ca773cafc27a01526ed9fbfec

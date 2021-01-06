@@ -15,7 +15,7 @@ class Assignments(models.Model):
     )
 
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True, default=None)
     date_filed = models.DateTimeField(default=timezone.now)
     assignment_type = models.CharField(max_length=200, choices=TYPE)
     user_created = models.ForeignKey(BulletJournalUser, on_delete=models.CASCADE,
