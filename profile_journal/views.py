@@ -78,3 +78,10 @@ class CompletedAssignmentView(LoginRequiredMixin, View):
         assignment.assignment_type = 'Completed'
         assignment.save()
         return redirect(f'/assignment_detail/{assignment_id}')
+
+
+class DeleteAssignmentView(LoginRequiredMixin, View):
+    def get(self, request, assignment_id):
+        assignment = Assignments.objects.get(id=assignment_id)
+        assignment.delete()
+        return HttpResponseRedirect(reverse('journal'))
