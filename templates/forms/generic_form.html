@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
+
+    <title>Form</title>
+  </head>
+  <body>
+
+      <div class="container">
+        <div class="row form_box">
+          <form method="post">
+            <div>
+              {% csrf_token %} {{form.as_p}}
+            </div>
+            <button type="submit" class="btn btn-primary submit_btn">Submit</button>
+          </form> 
+        </div>
+      </div>
+
+  </body>
+</html>

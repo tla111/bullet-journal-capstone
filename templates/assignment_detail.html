@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
+
+    <title>Assignment Detail</title>
+  </head>
+
+  <style>
+    .button_container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-evenly;
+
+    }
+    .button_container a {
+      width: 200px;
+      text-align: center;
+    }
+  </style>
+
+  <body>
+    
+  <div class="tables_container">
+    <table class="table table-striped table-dark">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Assignment</th>
+        <th scope="col">Description</th>
+        <th scope="col">Type</th>
+        <th scope="col">Date Field</th>
+        <th scope="col">Delete Ticket</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+          <td>{{assignment.title}}</td>
+          <td>{{assignment.description}}</td>
+          <td>{{assignment.assignment_type}}</td>
+          <td>{{assignment.date_filed}}</td>
+        <td>
+            <a href='/delete_assignment/{{assignment.id}}' class="paper-btn btn-info-outline">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+    
+  <div class="button_container">
+      <a href="/lesson_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline ">Lesson</a>
+      <a href="/activity_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Activity</a>
+      <a href="/quiz_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Quiz</a>
+      <a href="/assessment_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Assessment</a>
+      <a href="/completed_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Completed</a>
+      <a href="/journal/" class="paper-btn btn-info-outline">Return to Journal</a>
+  </div>  
+
+   
+  </body>
+</html>
