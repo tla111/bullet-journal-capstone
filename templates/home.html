@@ -1,0 +1,21 @@
+home
+
+<div>
+  {% if user.is_authenticated %} {% csrf_token %}
+  {% comment %} <button action="/journal/" type="button"><a href="{% url 'journal' %}">Blog</a></button> {% endcomment %}
+  <button action="/logout/" type="submit"><a href="{% url 'logout' %}">Logout</a></button>
+</div>
+<h1>Hi {{ user }} Welcome!!!</h1>
+{% else %}
+<div>
+<h1> Welcome! </h1>
+  <button  type="submit"><a href="{% url 'register' %}">Register</a></button>
+  <button type="submit"><a href="{% url 'login' %}">Login</a></button>
+  {% comment %} <button action="/journal/" type="button"><a href="{% url 'journal' %}">Blog</a></button> {% endcomment %}
+  {% endif %}
+</div>
+
+{% comment %} action="/register/" {% endcomment %}
+Information of what bjm is...
+
+Put in a pic 

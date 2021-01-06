@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
 
+def home(request):
+    return render(request, 'home.html')
+
+
 def index(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
