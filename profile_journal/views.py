@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
 
 from .models import Assignments, ReflectionPost
-from .forms import AddAssignment
+from .forms import AddAssignment, AddReflection
 # Create your views here.
 
 
@@ -12,7 +12,7 @@ class JournalPageView(LoginRequiredMixin, View):
     def get(self, request):
         kenzie_assignments = Assignments.objects.filter(user_created=request.user)
         reflection_posts = ReflectionPost.objects.filter(
-            reflection_user_created=request.user)
+            reflection_user_created=request.user).order_by('-submission_time')
         return render(request, "journal_profile.html", {'assignments': kenzie_assignments, 'reflection': reflection_posts})
 
 
@@ -32,6 +32,25 @@ class AddAssignmentView(LoginRequiredMixin, View):
                         assignment_type='New',
                         user_created=request.user,
                     )
+        return HttpResponseRedirect(reverse('journal'))
+
+
+class AddReflectionView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = AddReflection()
+        return render(request, 'forms/generic_form.html', {'form': form})
+
+    def post(self, request):
+        if request.method == 'POST':
+            form = AddReflection(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                ReflectionPost.objects.create(
+                    title=data['title'],
+                    content=data['content'],
+                    name_post=data['name_post'],
+                    reflection_user_created=request.user,
+                )
         return HttpResponseRedirect(reverse('journal'))
 
 

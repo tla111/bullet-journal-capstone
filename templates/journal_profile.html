@@ -17,7 +17,7 @@
     .container {
       border: 1px solid black;
     }
-    .card_body_contain {
+    .profile_container {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -48,6 +48,14 @@
     .completed_tasks td {
      text-decoration: line-through;
     }
+    .navbar_box {
+      display: flex;
+      justify-content: center;
+    }
+    .navbar_box a {
+      text-align: center;
+      width: 150px;
+    }
   </style>
 
   <body>  
@@ -55,13 +63,24 @@
   <div class="">
     <div class="row">
       <div class="col">
+
     
-          <div class="card user_card" style="width: 30em; height: 10rem">
+          <div class="card user_card" style="width: 30em; height: 15rem">
             <div class="card-body card_body_contain">
-              <h4>{{user.username}}'s Journal</h4>
-              <div class="profile_buttons">
-                <a href="/add_assignment/" class="paper-btn btn-secondary">Add Assignment</a>
-                <a href="/add_assignment/" class="paper-btn btn-secondary">Add Reflection</a>
+
+          <div class="navbar_box">
+              <a href="/" class="paper-btn btn-info">Home</a>
+              <a href="" class="paper-btn btn-info">Blog</a>
+              <a href="{% url 'logout' %}" class="paper-btn btn-info">Logout</a>
+          </div>
+
+              <div class='profile_container'>
+                  <h3>{{user.username}}'s Journal</h3>
+                  
+                  <div class="profile_buttons">
+                    <a href="/add_assignment/" class="paper-btn btn-secondary">Add Assignment</a>
+                    <a href="/add_reflection/" class="paper-btn btn-secondary">Add Reflection</a>
+                  </div>
               </div>
             </div>
           </div>
@@ -82,10 +101,10 @@
                           {% endif %}
                         <h5 class="card-subtitle">{{post.submission_time}}</h5>
                         <p class="card-text">{{post.content}}</p>
-                        <div class=reflection_buttons>
+                        <!-- <div class=reflection_buttons>
                           <a href="" class="paper-btn btn-secondary">Update</a>
                           <a href="" class="paper-btn btn-danger">Delete</a>
-                        </div>
+                        </div> -->
                       </div> 
                   </div>
               </div>
