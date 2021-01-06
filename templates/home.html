@@ -1,20 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+     <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
 
+    <title>Journal</title>
+  </head>
+  <body> 
+
+<div class="container">
 <div>
   {% if user.is_authenticated %} {% csrf_token %}
-  {% comment %} <button action="/journal/" type="button"><a href="{% url 'journal' %}">Blog</a></button> {% endcomment %}
+  <button type="button"><a href="{% url 'journal' %}">Your Journal</a></button>
+  <button  type="button"><a href="">Blog</a></button>
   <button action="/logout/" type="submit"><a href="{% url 'logout' %}">Logout</a></button>
 </div>
-<h1>Hi {{ user }} Welcome!!!</h1>
+
+<h1>Hi {{ user|capfirst }} Welcome 🤗 !!!</h1>
+<h2>Now your in! Please Go and Explore!!</h2>
+<h3>Some more info on the hows and outs of the site...</h3>
+<div>put in pic</div>
+
 {% else %}
+
+
 <div>
-<h1> Welcome! </h1>
   <button  type="submit"><a href="{% url 'register' %}">Register</a></button>
   <button type="submit"><a href="{% url 'login' %}">Login</a></button>
-  {% comment %} <button action="/journal/" type="button"><a href="{% url 'journal' %}">Blog</a></button> {% endcomment %}
-  {% endif %}
+  <button  type="button"><a href="">Check out Blogs</a></button>
+</div>
+  <h2> Welcome! </h2>
+  <h4> Thanks For Landing Here!!! 🥊 READYYYYYYY To Bullet JOURNALLLLLLL 🥊 </h4>
+<div> 
+  <h2>Information of what bjm is...
 </div>
 
-Information of what bjm is...
+<div class="container">
+  Put in a pic 
+</div>
+  {% endif %}
 
-Put in a pic 
+
+
+</div>
+</body>
+</html>

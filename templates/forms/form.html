@@ -1,13 +1,35 @@
-{% extends 'base.html' %}
-{% block  content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+     <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
+
+    <title>Journal</title>
+  </head>
+  <br/>
+  <body>
+<div class="container"> 
+  <button><a href="/">Home</a></button>
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <button><input type="submit" value="Submit" /></button>
+  </form>
+</div>
+</body>
+</html>
+
+
+
+
+{% comment %} {% extends 'base.html' %}
+{% block  content %} {% endcomment %}
  {% comment %} <form method="POST" action="">
             {% csrf_token %}
 </form> {% endcomment %}
-<a href="/">Home</a>
-<form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <input type="submit" value="Login" />
-           {{form.as_p}}
-</form>
 
-{% endblock  %}
+{% comment %} {% endblock  %} {% endcomment %}
+
+
