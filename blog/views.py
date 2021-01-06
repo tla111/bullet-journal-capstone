@@ -5,6 +5,7 @@ from django.views.generic import View
 from blog.models import BlogPosts
 from blog.forms import BlogPostAddForm
 
+<<<<<<< HEAD
 # Create your views here.
 def home_view(request):
     blogpost = BlogPosts.objects.all()
@@ -57,3 +58,8 @@ def edit_ticket(request, ticket_id):
         'form': TicketEditForm(initial=form_data),
         'title': 'Edit Ticket Screen'
     })
+=======
+# def all_blogs(request):
+#     blogs = Blog.objects.order_by('-date')
+#     return render(request, 'forms/blogs.html', {'blogs': blogs})
+>>>>>>> 80c5cbb4bdbea7a49a5c9e58846f70f2fb80d7fa

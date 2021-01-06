@@ -19,8 +19,12 @@ from profile_journal.views import JournalPageView
 from blog import views
 
 from profile_journal.views import JournalPageView, AddAssignmentView, AssignmentDetailView, LessonAssignmentView, ActivityAssignmentView, QuizAssignmentView, AssessmentAssignmentView, CompletedAssignmentView, DeleteAssignmentView
+<<<<<<< HEAD
 # >>>>>>> 2ac35f40c27d5c3ca773cafc27a01526ed9fbfec
 
+=======
+from authentication.views import home
+>>>>>>> 80c5cbb4bdbea7a49a5c9e58846f70f2fb80d7fa
 urlpatterns = [
     path('auth/', include('authentication.urls')),
     path('journal/', JournalPageView.as_view(), name='journal'),
@@ -34,6 +38,13 @@ urlpatterns = [
     path('delete_assignment/<int:assignment_id>/',
          DeleteAssignmentView.as_view()),
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('blog_homepage/', views.home_view, name='blog_homepage' ),
     path('blogpost_submit/', views.add_post,),
+=======
+    # path('login/', authviews.index, name="login"),
+    # path('register/', authviews.register, name="register"),
+    # path('logout/', authviews.logout_view, name="logout"),
+    path('', home, name="home")
+>>>>>>> 80c5cbb4bdbea7a49a5c9e58846f70f2fb80d7fa
 ]
