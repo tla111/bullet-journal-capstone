@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
 
-from .models import Assignments
+from .models import Assignments, ReflectionPost
 from .forms import AddAssignment
 # Create your views here.
 
@@ -11,8 +11,9 @@ from .forms import AddAssignment
 class JournalPageView(LoginRequiredMixin, View):
     def get(self, request):
         kenzie_assignments = Assignments.objects.filter(user_created=request.user)
-        return render(request, "journal_profile.html", {'assignments': kenzie_assignments} )
-
+        reflection_posts = ReflectionPost.objects.filter(
+            reflection_user_created=request.user)
+        return render(request, "journal_profile.html", {'assignments': kenzie_assignments, 'reflection': reflection_posts})
 
 
 class AddAssignmentView(LoginRequiredMixin, View):

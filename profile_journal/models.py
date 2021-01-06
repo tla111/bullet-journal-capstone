@@ -23,3 +23,16 @@ class Assignments(models.Model):
     
     def __str__(self):
         return f"{self.title}"
+
+
+class ReflectionPost(models.Model):
+    name_choices = ((True, 'Morning Reflection'), (False, 'Evening Reflection'))
+    title = models.CharField(max_length=200)
+    content = models.TextField(blank=True, null=True, default=None)
+    submission_time = models.DateTimeField(default=timezone.now)
+    name_post = models.BooleanField(choices=name_choices)
+    reflection_user_created = models.ForeignKey(BulletJournalUser, on_delete=models.CASCADE,
+                                     related_name="reflection_created_by_bulletjournaluser", blank=True, null=True, default=None)
+
+    def __str__(self):
+      return f"{self.title}"

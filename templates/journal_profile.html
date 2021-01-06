@@ -67,16 +67,21 @@
           </div>
           <br>
 
+          {% for post in reflection %}
           <div class="collapsible">
-            <input id="collapsible1" type="checkbox" name="collapsible">
-            <label for="collapsible1">First</label>
+            <input id=collapsible{{post.id}} type="checkbox" name="collapsible">
+            <label for=collapsible{{post.id}}>{{post.title}}</label>
             <div class="collapsible-body">
               <div class="reflection_container">
                 <div class="card" style="width: 28rem;">
                       <div class="card-body">
-                        <h4 class="card-title">Wake up earlier</h4>
-                        <h5 class="card-subtitle">Dated Field</h5>
-                        <p class="card-text">I noticed I have a lot of assessments coming up. For this, it is best to wake up an hour earlier than I usually do for the next few weeks so I can make sure I do not fall behind</p>
+                        {%if post.name_post == True %}
+                        <h4 class="card-title">Morning Reflection</h4>
+                         {%else%}
+                        <h4 class="card-title">Evening Reflection</h4>
+                          {% endif %}
+                        <h5 class="card-subtitle">{{post.submission_time}}</h5>
+                        <p class="card-text">{{post.content}}</p>
                         <div class=reflection_buttons>
                           <a href="" class="paper-btn btn-secondary">Update</a>
                           <a href="" class="paper-btn btn-danger">Delete</a>
@@ -86,6 +91,7 @@
               </div>
             </div>
           </div>
+          {% endfor %}
         
         </div><!--col-->
 
