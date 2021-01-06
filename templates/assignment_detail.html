@@ -10,6 +10,19 @@
     <title>Assignment Detail</title>
   </head>
 
+  <style>
+    .button_container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-evenly;
+
+    }
+    .button_container a {
+      width: 200px;
+      text-align: center;
+    }
+  </style>
+
   <body>
     
   <div class="tables_container">
@@ -30,7 +43,7 @@
           <td>{{assignment.assignment_type}}</td>
           <td>{{assignment.date_filed}}</td>
         <td>
-            <a href='/remove_assignment/{{assignment.id}}' class="paper-btn btn-info-outline">Delete</a>
+            <a href='/delete_assignment/{{assignment.id}}' class="paper-btn btn-info-outline">Delete</a>
         </td>
       </tr>
     </tbody>
@@ -38,7 +51,7 @@
   </div>
     
   <div class="button_container">
-      <a href="/lesson_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Lesson</a>
+      <a href="/lesson_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline ">Lesson</a>
       <a href="/activity_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Activity</a>
       <a href="/quiz_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Quiz</a>
       <a href="/assessment_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Assessment</a>
