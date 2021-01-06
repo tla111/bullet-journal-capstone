@@ -15,9 +15,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from profile_journal.views import JournalPageView
+from blog import views
 
 urlpatterns = [
     path('', include('authentication.urls')),
     # path('journal/', JournalPageView.as_view(), name='journal'),
     path('admin/', admin.site.urls),
+    path('blog_homepage/', views.home_view, name='blog_homepage' ),
+    path('blogpost_submit/', views.add_post,),
 ]
