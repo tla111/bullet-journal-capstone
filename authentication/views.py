@@ -9,16 +9,21 @@ def index(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
+            print(form.is_valid())
             data = form.cleaned_data
-            username = data["username"]
-            password = data["password"]
-            user = authenticate(username=username, password=password)
+            print(data)
+            # username = data["username"]
+            # password = data["password"]
+            user = authenticate(request,
+                                username=data["username"], password=data["password"])
+            print(user)
             if user:
                 login(request, user)
-                return redirect("home")
+                return redirect("/profile/")
     form = LoginForm()
     context = {
-        'title': 'SignIn',
+        'BTN_Text': 'Sign In',
+        'title': 'Sign Up!',
         'form': form
     }
     return render(request, 'forms/form.html', context)
@@ -31,17 +36,19 @@ def register(request):
         if form.is_valid():
             print(form.is_valid())
             data = form.cleaned_data
-            my_user = BulletJournalUser.objects.create(
+            my_user = BulletJournalUser.objects.create_user(
                 username=data['username'],
                 password=data["password1"],
                 email=data['email'],
             )
+            print(my_user)
             login(request, my_user)
-            return redirect("/test/")
+            return redirect("/journal/")
 
     form = RegisterForm()
     context = {
-        'title': 'Sign Up for an Account',
+        'BTN_Text': 'Register',
+        'title': 'Sign Up',
         'form': form
     }
     return render(request, 'forms/form.html', context)
