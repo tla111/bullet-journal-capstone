@@ -5,6 +5,10 @@ from django.contrib.auth import authenticate, login, logout
 from journaluser.models import BulletJournalUser
 
 
+def home(request):
+    return render(request, 'home.html')
+
+
 def index(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
