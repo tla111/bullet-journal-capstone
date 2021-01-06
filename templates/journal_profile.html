@@ -12,7 +12,7 @@
 
   <style>
     .tables_container {
-      width: 40vw;
+      width: 45vw;
     }
     .container {
       border: 1px solid black;
@@ -20,7 +20,8 @@
     .card_body_contain {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
     }
     .reflection_container {
       margin-top: 10px;
@@ -32,14 +33,20 @@
       text-align: center;
       width: 200px;
     }
-    .collapsible {
-      width: 25rem;
-    }
     .row {
       display: flex;
     }
     .col {
       width: 50%;
+    }
+    .profile_buttons {
+      display: flex;
+    }
+    .collapsible {
+      width: 30rem;
+    }
+    .completed_tasks td {
+     text-decoration: line-through;
     }
   </style>
 
@@ -49,11 +56,13 @@
     <div class="row">
       <div class="col">
     
-          <div class="card user_card" style="width: 25rem; height: 15rem">
+          <div class="card user_card" style="width: 30em; height: 10rem">
             <div class="card-body card_body_contain">
-              <h4>{{user.username}}'s Assignments</h4>
+              <h4>{{user.username}}'s Journal</h4>
+              <div class="profile_buttons">
                 <a href="/add_assignment/" class="paper-btn btn-secondary">Add Assignment</a>
                 <a href="/add_assignment/" class="paper-btn btn-secondary">Add Reflection</a>
+              </div>
             </div>
           </div>
           <br>
@@ -63,7 +72,7 @@
             <label for="collapsible1">First</label>
             <div class="collapsible-body">
               <div class="reflection_container">
-                <div class="card" style="width: 30rem;">
+                <div class="card" style="width: 28rem;">
                       <div class="card-body">
                         <h4 class="card-title">Wake up earlier</h4>
                         <h5 class="card-subtitle">Dated Field</h5>
@@ -165,7 +174,7 @@
 
                 {% for assignment in assignments %} 
                 {% if assignment.assignment_type == "Completed" %}
-                <tr>
+                <tr class='completed_tasks'>
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
@@ -179,19 +188,11 @@
               </tbody>
             </table>
           </div><!--Table Container-->
-      </div>
+      </div><!--Col-->
 
 
     </div>
   </div>
-
-
-
-          
-      
-        
-   
-    
 
   </body>
 </html>
