@@ -14,12 +14,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-<<<<<<< HEAD
+
 from profile_journal.views import JournalPageView
 from blog import views
-=======
+
 from profile_journal.views import JournalPageView, AddAssignmentView, AssignmentDetailView, LessonAssignmentView, ActivityAssignmentView, QuizAssignmentView, AssessmentAssignmentView, CompletedAssignmentView, DeleteAssignmentView
->>>>>>> 2ac35f40c27d5c3ca773cafc27a01526ed9fbfec
+# >>>>>>> 2ac35f40c27d5c3ca773cafc27a01526ed9fbfec
 
 urlpatterns = [
     path('auth/', include('authentication.urls')),
