@@ -123,5 +123,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 LOGIN_URL = '/authentication/login/'
 AUTH_USER_MODEL = "journaluser.BulletJournalUser"

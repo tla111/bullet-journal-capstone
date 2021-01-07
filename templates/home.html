@@ -1,3 +1,5 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'authentication/custom.css' %}" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,9 +22,6 @@
 </div>
 
 <h1>Hi {{ user|capfirst }} Welcome 🤗 !!!</h1>
-<h2>Now your in! Please Go and Explore!!</h2>
-<h3>Some more info on the hows and outs of the site...</h3>
-<div>put in pic</div>
 
 {% else %}
 
@@ -34,16 +33,24 @@
 </div>
   <h2> Welcome! </h2>
   <h4> Thanks For Landing Here!!! 🥊 READYYYYYYY To Bullet JOURNALLLLLLL 🥊 </h4>
-<div> 
-  <h2>Information of what bjm is...
-</div>
-
-<div class="container">
-  Put in a pic 
-</div>
   {% endif %}
 
-
+<div class="row flex-center">
+  <div class="sm-4 col"><b>Your Personal Bullet Journal!</b><br/>
+  Uses. Bullet journal, or bullet journaling, 
+  is a creative way to schedule your day, week, month, or year.
+   A bullet journal is also used to keep track of what you have done or what you haven't.
+   Yasss, stay on top of your academics and track mental health-related ideas.
+   {% if user.is_authenticated %}<h2> We hope You are enjoying the site!</h2>{% endif %}
+   <h5>The Creaters: <br/> Matthew Morris, Tim La, Wes, Stephanie Guirand</h5>
+  </div>
+  <div class="sm-4 col"><img
+  src="{% static 'authentication/Untitled design.jpg' %}"
+  width="500"
+  height="10"
+  alt="BJM Logo" /> 
+  </div>
+</div>
 
 </div>
 </body>
