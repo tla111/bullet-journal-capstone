@@ -14,17 +14,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from profile_journal.views import JournalPageView, AddAssignmentView, AssignmentDetailView, LessonAssignmentView, ActivityAssignmentView, QuizAssignmentView, AssessmentAssignmentView, CompletedAssignmentView
-
+from profile_journal.views import JournalPageView, AddAssignmentView, AssignmentDetailView, LessonAssignmentView, ActivityAssignmentView, QuizAssignmentView, AssessmentAssignmentView, CompletedAssignmentView, DeleteAssignmentView, AddReflectionView
+from authentication.views import home
 urlpatterns = [
     path('auth/', include('authentication.urls')),
     path('journal/', JournalPageView.as_view(), name='journal'),
     path('add_assignment/', AddAssignmentView.as_view()),
+    path('add_reflection/', AddReflectionView.as_view()),
     path('assignment_detail/<int:assignment_id>/', AssignmentDetailView.as_view()),
     path('lesson_assignment/<int:assignment_id>/', LessonAssignmentView.as_view()),
     path('activity_assignment/<int:assignment_id>/', ActivityAssignmentView.as_view()),
     path('quiz_assignment/<int:assignment_id>/', QuizAssignmentView.as_view()),
     path('assessment_assignment/<int:assignment_id>/', AssessmentAssignmentView.as_view()),
     path('completed_assignment/<int:assignment_id>/', CompletedAssignmentView.as_view()),
+    path('delete_assignment/<int:assignment_id>/',
+         DeleteAssignmentView.as_view()),
     path('admin/', admin.site.urls),
+    # path('login/', authviews.index, name="login"),
+    # path('register/', authviews.register, name="register"),
+    # path('logout/', authviews.logout_view, name="logout"),
+    path('', home, name="home")
 ]

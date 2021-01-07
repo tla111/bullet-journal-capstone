@@ -75,3 +75,4 @@ def edit_post(request, id):
 def delete_post(request, id):
     BlogModel.objects.filter(id=id).delete()
     return redirect('blog')
+

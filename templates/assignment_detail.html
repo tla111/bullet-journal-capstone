@@ -7,13 +7,22 @@
 
     <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
 
-    <title>Assignment</title>
+    <title>Assignment Detail</title>
   </head>
+
   <style>
-    a {
-      text-decoration: none !important;
+    .button_container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-evenly;
+
+    }
+    .button_container a {
+      width: 200px;
+      text-align: center;
     }
   </style>
+
   <body>
     
   <div class="tables_container">
@@ -34,9 +43,7 @@
           <td>{{assignment.assignment_type}}</td>
           <td>{{assignment.date_filed}}</td>
         <td>
-          <button class='btn btn-danger'>
-            <a href='/remove_assignment/{{assignment.id}}'>Delete</a>
-          </button>
+            <a href='/delete_assignment/{{assignment.id}}' class="paper-btn btn-info-outline">Delete</a>
         </td>
       </tr>
     </tbody>
@@ -44,24 +51,12 @@
   </div>
     
   <div class="button_container">
-    <button class="btn btn-light">
-      <a href="/lesson_assignment/{{assignment.id}}/">Lesson</a>
-    </button>
-    <button class="btn btn-light">
-      <a href="/activity_assignment/{{assignment.id}}/">Activity</a>
-    </button>
-    <button class="btn btn-light">
-      <a href="/quiz_assignment/{{assignment.id}}/">Quiz</a>
-    </button>
-    <button class="btn btn-light">
-      <a href="/assessment_assignment/{{assignment.id}}/">Assessment</a>
-    </button>
-     <button class="btn btn-light">
-      <a href="/completed_assignment/{{assignment.id}}/">Completed</a>
-    </button>
-    <button class="btn btn-light">
-      <a href="/journal/">Return to Journal</a>
-    </button>
+      <a href="/lesson_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline ">Lesson</a>
+      <a href="/activity_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Activity</a>
+      <a href="/quiz_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Quiz</a>
+      <a href="/assessment_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Assessment</a>
+      <a href="/completed_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Completed</a>
+      <a href="/journal/" class="paper-btn btn-info-outline">Return to Journal</a>
   </div>  
 
    
