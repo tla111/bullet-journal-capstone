@@ -1,17 +1,12 @@
 from django.db import models
-# from journaluser.models import BulletJournalUser
-# from django.utils import timezone
+from django.utils import timezone
+from django.conf import settings
 
 
-
-# class Blog(models.Model):
-#     title = models.CharField(max_length=200)
-#     blog_content = models.TextField()
-#     date = models.DateTimeField(default=timezone.now)
-#     user = models.ForeignKey(BulletJournalUser, on_delete=models.CASCADE, related_name="blog_user", blank=True, null=True, default=None)
-
-#     def __str__(self):
-#         return self.title
-
-# See if Team like or not!
-# Did not migrate...
+class BlogModel(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    body = models.TextField(max_length=380)
+    tags = models.CharField(max_length=100)
+    list_date = models.DateTimeField(default=timezone.now)

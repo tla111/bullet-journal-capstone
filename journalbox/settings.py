@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'authentication',
     'blog',
     'journaluser',
-    'profile_journal'
+    'profile_journal',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
