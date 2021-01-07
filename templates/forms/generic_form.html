@@ -12,8 +12,13 @@
     <title>Form</title>
   </head>
   <body>
-  <button><a href="/">Home</a></button>
-  <button type="button"><a href="{% url 'journal' %}">Your Journal</a></button>
+
+  <br/>
+
+  <div class="navbar_box">
+    <a href="/" class="paper-btn btn-info">Home</a>
+    <a href="{% url 'journal' %}" class="paper-btn btn-info">Your Journal</a>
+  </div>
       <div class="container">
         <div class="row form_box">
           <form method="post">
