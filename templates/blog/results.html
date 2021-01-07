@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+{% if results %}
+ <div class="container-fluid">
+        {% for post in results %}
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                    <h4 class="card-title">{{post.title}}</h4>
+                    <h5 class="card-subtitle">{{post.author}} posted {{post.list_date| timesince}} </h5>
+                    <p class="card-text">{{post.body}}</p>
+                    <hr/>
+                    <p>Tags: {{post.tags}}</p>
+                    {% if post.author.id  != request.user.id %}
+                    {% else %}
+                        <a class="card-link" href="/delete_post/post.id">Delete Blog Post</a>
+                        <a class="card-link" href="/edit_post/post.id">Edit Blog Post</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <h2>No Results for {{keywords}}</h2>
+    {% endif %}
+{% endblock  %}

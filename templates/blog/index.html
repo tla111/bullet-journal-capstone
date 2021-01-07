@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block  content%}
+<div class="container-fluid">
+    <div class="contianer">
+        {% if user.is_authenticated %}
+            <form action="/search">
+                <input class="input-block" type="text" name="keywords" id="paperInputs2">
+                <button type="submit" class="paper-btn btn-primary" value="Primary">Search</button>
+                <a href="/create_post">Create Post</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Signin</a>
+        {% endif %}
+         
+         
+    </div>
+    
+<div class="container-fluid">
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-sm">
+            <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                    <h4 class="card-title">{{post.title}}</h4>
+                    <h5 class="card-subtitle">{{post.author}} posted {{post.list_date| timesince}} ago</h5>
+                    <hr/>
+                    <p class="card-text">{{post.body|truncatechars:50}}</p>
+                    <hr/>
+                    <p>Tags: {{post.tags}}</p>
+                    {% if post.author.id  != request.user.id %}
+                    {% else %}
+                        <a class="card-link" href="/delete_post/{{post.id}}">Delete Blog Post</a>
+                        <a class="card-link" href="/edit_post/{{post.id}}">Edit Blog Post</a>
+                    {% endif %}
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+    </div>  
+</div>
+
+{% endblock  %}
