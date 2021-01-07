@@ -1,3 +1,5 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'authentication/custom.css' %}" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -66,7 +68,6 @@
   </style>
 
   <body>  
-
   <div class="">
     <div class="row">
       <div class="col first_col">
@@ -93,7 +94,7 @@
           </div>
           <br>
 
-          {% for post in reflection %}
+          {% for post in reflection_posts %}
           <div class="collapsible">
             <input id=collapsible{{post.id}} type="checkbox" name="collapsible">
             <label for=collapsible{{post.id}}>{{post.title}}</label>

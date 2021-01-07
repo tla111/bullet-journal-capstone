@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'authentication',
     'blog',
     'journaluser',
-    'profile_journal'
+    'profile_journal',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 
 LOGIN_URL = '/authentication/login/'
 AUTH_USER_MODEL = "journaluser.BulletJournalUser"

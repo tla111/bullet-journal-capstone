@@ -1,3 +1,5 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'authentication/custom.css' %}" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +14,9 @@
   <br/>
   <body>
 <div class="container"> 
-  <button><a href="/">Home</a></button>
+  <div class="navbar_box">
+    <a href="/" class="paper-btn btn-info">Home</a>
+  </div>
   <form method="post">
     {% csrf_token %} {{ form.as_p }}
     <button><input type="submit" value="Submit" /></button>
@@ -24,20 +28,3 @@
 
 
 
-{% comment %} {% extends 'base.html' %}
-{% block  content %} {% endcomment %}
- {% comment %} <form method="POST" action="">
-            {% csrf_token %}
-<<<<<<< HEAD
-</form> {% endcomment %}
-
-{% comment %} {% endblock  %} {% endcomment %}
-
-
-=======
-           {{form.as_p}}
-           <input type="submit" value="Submit">
-</form>
-
-{% endblock  %}
->>>>>>> 2ac35f40c27d5c3ca773cafc27a01526ed9fbfec
