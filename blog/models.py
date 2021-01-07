@@ -1,5 +1,5 @@
 from django.db import models
-<<<<<<< HEAD
+
 from django.contrib.auth.models import timezone
 from journaluser.models import BulletJournalUser
 # Create your models here.
@@ -15,7 +15,7 @@ class BlogPosts(models.Model):
 
 
 
-=======
+
 # from journaluser.models import BulletJournalUser
 # from django.utils import timezone
 
@@ -32,4 +32,4 @@ class BlogPosts(models.Model):
 
 # See if Team like or not!
 # Did not migrate...
->>>>>>> 80c5cbb4bdbea7a49a5c9e58846f70f2fb80d7fa
+# >>>>>>> 80c5cbb4bdbea7a49a5c9e58846f70f2fb80d7fa
