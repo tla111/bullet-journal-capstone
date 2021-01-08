@@ -28,10 +28,13 @@ from authentication.views import home
 from profile_journal.views import JournalPageView, AddAssignmentView, AssignmentDetailView, LessonAssignmentView, ActivityAssignmentView, QuizAssignmentView, AssessmentAssignmentView, CompletedAssignmentView, DeleteAssignmentView, AddReflectionView
 from authentication.views import home, index, register, logout_view
 from blog import views
-
+from django.conf.urls import url
+from django.views.static import serve 
+from django.conf import settings
 
 # >>>>>>> 7ce28d065b921d4f481895d355dd87fc0ada2327
 urlpatterns = [
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
     path('auth/', include('authentication.urls')),
     path('journal/', JournalPageView.as_view(), name='journal'),
     path('add_assignment/', AddAssignmentView.as_view()),

@@ -19,7 +19,7 @@
 <div class="navbar_box">
   {% if user.is_authenticated %} {% csrf_token %}
    <a href="{% url 'journal' %}" class="paper-btn btn-info">Your Journal</a>
-   <a href="" class="paper-btn btn-info">Blog</a>
+   <a href="{% url 'blog' %}" class="paper-btn btn-info">Blog</a>
    <a href="{% url 'logout' %}" class="paper-btn btn-info">Logout</a>
 </div>
 
@@ -30,7 +30,7 @@
 <div class="navbar_box">
  <a href="{% url 'register' %}" class="paper-btn btn-info"> New User: Register Here!</a>
  <a href="{% url 'login' %}" class="paper-btn btn-info">Login</a>
- <a href="" class="paper-btn btn-info">Check out Blogs</a>
+ <a href="{% url 'blog' %}" class="paper-btn btn-info">Check out Blogs</a>
 </div>
 
   <h2> Life, At Your Own Pace 📓 </h2>
@@ -43,14 +43,13 @@
    is a creative way to schedule your day, week, month, or year.
    A bullet journal is also used to keep track of what you have done or what you haven't.
    Yasss, stay on top of your academics and track mental health-related ideas.
-   {% if user.is_authenticated %}<h2> We hope You are enjoying the site!</h2>{% endif %}
-   <h6>The Creaters: <br/> Matthew Morris, Tim La, Wesley Salesberry, Stephanie Guirand</h6>
+   {% if user.is_authenticated %}<h3> We hope You are enjoying the site!</h3>{% endif %}
+   <h6>The Creators: <br/> Matthew Morris, Tim La, Wesley Salesberry, Stephanie Guirand</h6>
   </div>
-  <div class="sm-4 col"><img
-   src="{% static 'authentication/Untitled design.jpg' %}"
-   width="250"
-   height="10"
-   alt="BJM Logo" /> 
+  <div class="sm-4 col journal_image">
+  <img
+   src="{% static 'authentication/journal3.jpeg' %}"
+   alt="BJM Logo" />
   </div>
 </div>
 
@@ -58,11 +57,11 @@
   <div class="col-4 col">
   <p class="text-secondary">Plan</p> 
     Make better task arrangements by having a high-level view of your whole week. 
-    Our create your list helps you achieve higher productivity while maintaining balance.
+    Our create your list helps you achieve higher productivity while maintaining balance with your schedule.
   </div>
   <div class="col-4 col">
   <p class="text-warning">Track</p>
-    Keep up with important practices: meditation, exercise, water consumption, Academics, book reading etc. 
+    Keep up with important practices: meditation, exercise, water consumption, academics, book reading etc. 
     Live life with momentum.
   </div>
   <div class="col-4 col">
@@ -71,8 +70,6 @@
     Tasks in lists can be edited so you know exactly when to do what.
   </div>
 </div>
-
-
 
 
 </div>
