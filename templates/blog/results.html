@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
+<div class="navbar_box">
+    <a href="/" class="paper-btn btn-info">Home</a>
+    <a href="{% url 'journal' %}" class="paper-btn btn-info">Your Journal</a>
+    <a href="{% url 'blog' %}" class="paper-btn btn-info">Back to Blog</a>
+    <a href="{% url 'logout' %}" class="paper-btn btn-info">Logout</a>
+</div>
 {% if results %}
  <div class="container-fluid">
         {% for post in results %}

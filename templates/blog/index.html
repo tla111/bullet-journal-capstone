@@ -1,17 +1,30 @@
 {% extends 'base.html' %}
 
 {% block  content%}
+
+<br/>
+{% comment %} <div class="contianer"> {% endcomment %}
 <div class="container-fluid">
     <div class="contianer">
         {% if user.is_authenticated %}
+        <div class="navbar_box">
+            <a href="/" class="paper-btn btn-info">Home</a>
+            <a href="{% url 'journal' %}" class="paper-btn btn-info">Your Journal</a>
+            <a href="{% url 'logout' %}" class="paper-btn btn-info">Logout</a>
+        </div>
+        <br/>
             <form action="/search">
                 <input class="input-block" type="text" name="keywords" id="paperInputs2">
                 <button type="submit" class="paper-btn btn-primary" value="Primary">Search</button>
-                <a href="/create_post">Create Post</a>
-                <a href="{% url 'logout' %}">Logout</a>
+                <div class="navbar_box">
+                <a href="/create_post" class="paper-btn btn-info">Create Post</a>
+                </div>
             </form>
         {% else %}
-            <a href="{% url 'login' %}">Signin</a>
+        <div class="navbar_box">
+            <a href="/" class="paper-btn btn-info">Home</a>
+        </div>
+            {% comment %} <a href="{% url 'login' %}">Signin</a> {% endcomment %}
         {% endif %}
          
          
@@ -40,5 +53,5 @@
         {% endfor %}
     </div>  
 </div>
-
+{% comment %} </div> {% endcomment %}
 {% endblock  %}
