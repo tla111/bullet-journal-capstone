@@ -48,7 +48,7 @@
       display: flex;
     }
     .collapsible {
-      width: 30rem;
+      width: 28rem;
     }
     .completed_tasks td {
      text-decoration: line-through;
@@ -74,7 +74,7 @@
       <div class="col first_col">
 
     
-          <div class="card user_card" style="width: 30em; height: 15rem">
+          <div class="card user_card" style="width: 28em; height: 15rem">
             <div class="card-body card_body_contain">
 
           <div class="navbar_box">
@@ -102,14 +102,14 @@
             <label for=collapsible{{post.id}}>{{post.title}}</label>
             <div class="collapsible-body">
               <div class="reflection_container">
-                <div class="card" style="width: 28rem;">
+                <div class="card" style="width: 26rem;">
                       <div class="card-body">
                         {%if post.name_post == True %}
                         <h4 class="card-title">Morning Reflection</h4>
                          {%else%}
                         <h4 class="card-title">Evening Reflection</h4>
                           {% endif %}
-                        <h5 class="card-subtitle">{{post.submission_time}}</h5>
+                        <h5 class="card-subtitle">{{post.submission_time | timesince}} ago</h5>
                         <p class="card-text">{{post.content}}</p>
                         <!-- <div class=reflection_buttons>
                           <a href="" class="paper-btn btn-secondary">Update</a>
@@ -130,10 +130,10 @@
             <table class="table table-striped table-info">
               <thead class="thead-info">
                 <tr>
-                  <th scope="col"'>Assignment</th>
+                  <th scope="col">Assignment</th>
                   <th scope="col">Description</th>
                   <th scope="col">Type</th>
-                  <th scope="col">Date Field</th>
+                  <th scope="col">Time Posted</th>
                   <th scope="col">Update Ticket</th>
                 </tr>
               </thead>
@@ -144,7 +144,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                     <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>
@@ -158,7 +158,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                       <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>
@@ -172,7 +172,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                     <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>
@@ -186,7 +186,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                     <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>
@@ -200,7 +200,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                     <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>
@@ -214,7 +214,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                     <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>

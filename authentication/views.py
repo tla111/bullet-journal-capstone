@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from journaluser.models import BulletJournalUser
 from django.contrib.auth.forms import UserCreationForm
+from journaluser.models import BulletJournalUser
+from django.contrib import messages
+
 
 def home(request):
     return render(request, 'home.html')
@@ -22,6 +25,9 @@ def index(request):
             if user:
                 login(request, user)
                 return redirect("/journal/")
+            else:
+                messages.error(request, 'Invalid Credentials')
+                return redirect('login')
     form = LoginForm()
     context = {
         'BTN_Text': 'Sign In',
@@ -32,11 +38,14 @@ def index(request):
 
 
 def register(request):
-    print(request)
     if request.method == "POST":
-        form = RegisterForm(request.POST)
+        username = request.POST['username']
+        if BulletJournalUser.objects.filter(username=username).exists():
+            messages.error(request, 'User name is taken')
+            return redirect('register')
+        else:
+            form = RegisterForm(request.POST)
         if form.is_valid():
-            print(form.is_valid())
             data = form.cleaned_data
             BulletJournalUser.objects.create_user(
                 username=data['username'],
