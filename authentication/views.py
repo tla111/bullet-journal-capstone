@@ -3,7 +3,7 @@ from .forms import RegisterForm, LoginForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from journaluser.models import BulletJournalUser
-
+from django.contrib.auth.forms import UserCreationForm
 
 def home(request):
     return render(request, 'home.html')
@@ -16,14 +16,12 @@ def index(request):
             print(form.is_valid())
             data = form.cleaned_data
             print(data)
-            # username = data["username"]
-            # password = data["password"]
             user = authenticate(request,
                                 username=data["username"], password=data["password"])
             print(user)
             if user:
                 login(request, user)
-                return redirect("/profile/")
+                return redirect("/journal/")
     form = LoginForm()
     context = {
         'BTN_Text': 'Sign In',
@@ -40,14 +38,17 @@ def register(request):
         if form.is_valid():
             print(form.is_valid())
             data = form.cleaned_data
-            my_user = BulletJournalUser.objects.create_user(
+            BulletJournalUser.objects.create_user(
                 username=data['username'],
                 password=data["password1"],
                 email=data['email'],
             )
-            print(my_user)
-            login(request, my_user)
-            return redirect("/journal/")
+            user = authenticate(
+                request, username=data['username'], password=data['password1'])
+            print(user)
+            if user:
+                login(request, user)
+                return redirect("/journal/")
 
     form = RegisterForm()
     context = {
@@ -60,4 +61,4 @@ def register(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return redirect('home')
