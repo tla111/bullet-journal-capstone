@@ -79,7 +79,7 @@
 
           <div class="navbar_box">
               <a href="/" class="paper-btn btn-info">Home</a>
-              <a href="" class="paper-btn btn-info">Blog</a>
+              <a href="{% url 'blog' %}" class="paper-btn btn-info">Blog</a>
               <a href="{% url 'logout' %}" class="paper-btn btn-info">Logout</a>
           </div>
 
@@ -94,6 +94,7 @@
             </div>
           </div>
           <br>
+          
 
           {% for post in reflection %}
           <div class="collapsible">
@@ -122,6 +123,7 @@
           {% endfor %}
         
         </div><!--col-->
+        
 
       <div class="col second_col ">
          <div class="tables_container">

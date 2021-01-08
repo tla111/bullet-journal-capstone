@@ -1,5 +1,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'authentication/custom.css' %}" />
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,21 +12,22 @@
 
     <title>Journal</title>
   </head>
-  <br/>
+
   <body>
-<div class="container"> 
-  <div class="navbar_box">
+
+<div class="navbar_box">
     <a href="/" class="paper-btn btn-info">Home</a>
-    {% if user.is_authenticated %}<a href="{% url 'blog' %}" class="paper-btn btn-info">Back to Blog</a>{% endif %}
   </div>
-  <form method="post">
-    {% csrf_token %} {{ form.as_p }}
-    <button><input type="submit" value="Submit" /></button>
-  </form>
+
+<p> Page not Found 404 </p>
+
+<div class="container">
+ <img
+   src="{% static 'authentication/404.jpg' %}"
+   width="600"
+   height="10"
+   alt="404 Logo" /> 
 </div>
-</body>
-</html>
 
-
-
-
+   </body>
+   </html>
