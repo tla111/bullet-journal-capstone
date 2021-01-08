@@ -79,7 +79,7 @@
 
           <div class="navbar_box">
               <a href="/" class="paper-btn btn-info">Home</a>
-              <a href="" class="paper-btn btn-info">Blog</a>
+              <a href="{% url 'blog' %}" class="paper-btn btn-info">Blog</a>
               <a href="{% url 'logout' %}" class="paper-btn btn-info">Logout</a>
           </div>
 
@@ -95,7 +95,7 @@
           </div>
           <br>
 
-          {% for post in reflection_posts %}
+          {% for post in reflection %}
           <div class="collapsible">
             <input id=collapsible{{post.id}} type="checkbox" name="collapsible">
             <label for=collapsible{{post.id}}>{{post.title}}</label>
@@ -128,7 +128,7 @@
             <table class="table table-striped table-info">
               <thead class="thead-info">
                 <tr>
-                  <th scope="col"'>Assignment</th>
+                  <th scope="col">Assignment</th>
                   <th scope="col">Description</th>
                   <th scope="col">Type</th>
                   <th scope="col">Date Field</th>
