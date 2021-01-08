@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import BlogModel
 from .forms import BlogForm
+from django.contrib import messages
 
 
 def blog_index(request):
@@ -23,6 +24,9 @@ def create_post(request):
                 author=request.user
             )
             return redirect('blog')
+        else:
+            messages.error(request, 'Body Text Exceeds 300 Characters')
+            return redirect('create_post')
     form = BlogForm()
     context = {
         'title': 'Create Post',
@@ -35,7 +39,6 @@ def create_post(request):
 def search(request):
     search_list = BlogModel.objects.order_by('-list_date')
 
-    """Keywords"""
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
         if keywords:
@@ -56,7 +59,6 @@ def edit_post(request, id):
         edit = BlogForm(request.POST)
         if edit.is_valid():
             data = edit.cleaned_data
-            print(data)
             post.title = data['title']
             post.body = data['body']
             post.tags = data['tags']
@@ -75,4 +77,3 @@ def edit_post(request, id):
 def delete_post(request, id):
     BlogModel.objects.filter(id=id).delete()
     return redirect('blog')
-
