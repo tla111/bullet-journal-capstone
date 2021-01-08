@@ -108,7 +108,7 @@
                          {%else%}
                         <h4 class="card-title">Evening Reflection</h4>
                           {% endif %}
-                        <h5 class="card-subtitle">{{post.submission_time}}</h5>
+                        <h5 class="card-subtitle">{{post.submission_time | timesince}} ago</h5>
                         <p class="card-text">{{post.content}}</p>
                         <!-- <div class=reflection_buttons>
                           <a href="" class="paper-btn btn-secondary">Update</a>
@@ -131,7 +131,7 @@
                   <th scope="col"'>Assignment</th>
                   <th scope="col">Description</th>
                   <th scope="col">Type</th>
-                  <th scope="col">Date Field</th>
+                  <th scope="col">Time Posted</th>
                   <th scope="col">Update Ticket</th>
                 </tr>
               </thead>
@@ -142,7 +142,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                     <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>
@@ -156,7 +156,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                       <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>
@@ -170,7 +170,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                     <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>
@@ -184,7 +184,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                     <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>
@@ -198,7 +198,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                     <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>
@@ -212,7 +212,7 @@
                   <td>{{assignment.title}}</td>
                   <td>{{assignment.description}}</td>
                   <td>{{assignment.assignment_type}}</td>
-                  <td>{{assignment.date_filed}}</td>
+                  <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
                     <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
                   </td>
