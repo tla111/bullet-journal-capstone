@@ -48,8 +48,6 @@ urlpatterns = [
     path('delete_assignment/<int:assignment_id>/',
          DeleteAssignmentView.as_view()),
     path('admin/', admin.site.urls),
-    path('blog_homepage/', views.home_view, name='blog_homepage' ),
-    path('blogpost_submit/', views.add_post,),
     # path('login/', authviews.index, name="login"),
     # path('register/', authviews.register, name="register"),
     # path('logout/', authviews.logout_view, name="logout"),
@@ -63,5 +61,6 @@ urlpatterns = [
     path('search/', views.search, name="search"),
     path('edit_post/<int:id>/', views.edit_post, name="edit_post"),
     path('delete_post/<int:id>/', views.delete_post, name="delete_post"),
+
 
 ]
