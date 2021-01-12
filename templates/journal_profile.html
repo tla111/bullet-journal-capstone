@@ -69,7 +69,7 @@
     .card {
       position: relative;
       border-radius: 20px;
-      background: linear-gradient(135deg, black, white)
+      background: linear-gradient(135deg, silver, white)
     }
     .card_img {
      position: absolute;
@@ -77,19 +77,20 @@
      left: 50%;
      transform: translateX(-50%);
      display: flex;
+     flex-direction: column;
      justify-content: center;
      align-items: center;
      height: 296px;
      width: 555px;
-     background: linear-gradient(135deg, black, white);
+     background: linear-gradient(135deg, silver, white);
      border-radius: 20px;
      transition: 0.5s;
     }
     .card:hover .card_img{
       left: 175%;
     }
-    .card_img h3 {
-      color: black;
+    .card_img h2 {
+      color: black
     }
   </style>
 
@@ -109,16 +110,18 @@
           </div>
 
               <div class='profile_container'>
-                  <h3>{{user.username}}'s Journal</h3>
+                  <h3>You Can Do It!</h3>
                   
                   <div class="profile_buttons">
                     <a href="/add_assignment/" class="paper-btn btn-secondary">Add Assignment</a>
                     <a href="/add_reflection/" class="paper-btn btn-secondary">Add Reflection</a>
+                    <a href="/add_reflection/" class="paper-btn btn-secondary">Add Color</a>
                   </div>
               </div>
 
               <div class='card_img'>
-                <h3>{{user.username}}'s Journal</h3>
+                <h2>{{user.username}}'s Journal</h2> 
+                <h4>Assignments Need to Complete: {{count}}</h4>
               </div>
 
             </div>

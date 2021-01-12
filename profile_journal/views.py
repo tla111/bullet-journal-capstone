@@ -11,9 +11,10 @@ from .forms import AddAssignment, AddReflection
 class JournalPageView(LoginRequiredMixin, View):
     def get(self, request):
         kenzie_assignments = Assignments.objects.filter(user_created=request.user)
+        assignments_count = kenzie_assignments.all().count()
         reflection_posts = ReflectionPost.objects.filter(
             reflection_user_created=request.user).order_by('-submission_time')
-        return render(request, "journal_profile.html", {'assignments': kenzie_assignments, 'reflection': reflection_posts})
+        return render(request, "journal_profile.html", {'assignments': kenzie_assignments, 'reflection': reflection_posts, 'count': assignments_count})
 
 
 class AddAssignmentView(LoginRequiredMixin, View):
