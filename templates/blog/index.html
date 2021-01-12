@@ -1,57 +1,90 @@
 {% extends 'base.html' %}
 
 {% block  content%}
+<style>
+    .container-fluid{
+        display: flex;
+        justify-content: center;
+    }
+    .my-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+    .my-container{
+        padding: 10px;
+    }
+    .submit-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .display-card{
+        width: 20rem; 
+        background-color: #2e3233; 
+        color: #fff;
+    }
+      .display-card a{
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s ease-in;
+    }
+</style>
 
 <br/>
-{% comment %} <div class="contianer"> {% endcomment %}
-<div class="container-fluid">
-    <div class="contianer">
-        {% if user.is_authenticated %}
+{% comment %} <div class="container"> {% endcomment %}
+<div class="contianer-fluid">
+    {% if user.is_authenticated %}
         <div class="navbar_box">
             <a href="/" class="paper-btn btn-info">Home</a>
             <a href="{% url 'journal' %}" class="paper-btn btn-info">Your Journal</a>
+            <a href="/create_post" class="paper-btn btn-info">Create Post</a>
             <a href="{% url 'logout' %}" class="paper-btn btn-info">Logout</a>
         </div>
-        <br/>
+    {% endif %}
+</div>
+<hr/>
+
+<div class="container" >
+    <div class="border margin-large my-card my-container">
+        <div class="card-body">
+            <h4 class="card-title" style="color: #fff;">Search For Achievements by Tag</h4>
             <form action="/search">
-                <input class="input-block" type="text" name="keywords" id="paperInputs2">
-                <button type="submit" class="paper-btn btn-primary" value="Primary">Search</button>
-                <div class="navbar_box">
-                <a href="/create_post" class="paper-btn btn-info">Create Post</a>
+                <div class="row flex-middle">
+                    <div class="col sm-12">
+                        <div class="form-group">
+                            <input class="input-block" type="text" name="tags" id="paperInputs2" placeholder="Search by Tags" style="color: #fff;">
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-btn">
+                    <button type="submit" class="paper-btn btn-primary" value="Primary">Search</button>
                 </div>
             </form>
-        {% else %}
-        <div class="navbar_box">
-            <a href="/" class="paper-btn btn-info">Home</a>
         </div>
-            {% comment %} <a href="{% url 'login' %}">Signin</a> {% endcomment %}
-        {% endif %}
-         
-         
     </div>
-    
-<div class="container-fluid">
+</div>
+
+<div class="container-fluid my-container">
     <div class="row">
-        {% for post in posts %}
-        <div class="col-sm">
-            <div class="card" style="width: 20rem;">
+        {% for post in results %}
+            <div class="card margin-small display-card">
+             <a class="card-link" href="/article/{{post.id}}">
                 <div class="card-body">
-                    <h4 class="card-title">{{post.title}}</h4>
-                    <h5 class="card-subtitle">{{post.author}} posted {{post.list_date| timesince}} ago</h5>
-                    <hr/>
+                   <h4 class="card-title">{{ post.title}}</h4>
+                    <h5 class="card-subtitle">Created by {{ post.author }} {{post.list_date| timesince}} ago</h5>
                     <p class="card-text">{{post.body|truncatechars:50}}</p>
-                    <hr/>
-                    <p>Tags: {{post.tags}}</p>
+                    <hr></a>
                     {% if post.author.id  != request.user.id %}
+                        <p>Tags: {{post.tags}}</p>
                     {% else %}
-                        <a class="card-link" href="/delete_post/{{post.id}}">Delete Blog Post</a>
-                        <a class="card-link" href="/edit_post/{{post.id}}">Edit Blog Post</a>
+                        <a class="card-link text-warning" href="/delete_post/{{post.id}}">Delete</a>
+                        <a class="card-link text-primary" href="/edit_post/{{post.id}}">Edit Post</a>
                     {% endif %}
                 </div>
             </div>
-            </div>
         {% endfor %}
-    </div>  
+    </div>
 </div>
-{% comment %} </div> {% endcomment %}
-{% endblock  %}
+{% endblock %}
