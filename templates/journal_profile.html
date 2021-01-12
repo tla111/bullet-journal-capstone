@@ -66,6 +66,31 @@
       width: 100px;
       height: 55px;
     }
+    .card {
+      position: relative;
+      border-radius: 20px;
+      background: linear-gradient(135deg, black, white)
+    }
+    .card_img {
+     position: absolute;
+     bottom: 0;
+     left: 50%;
+     transform: translateX(-50%);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 296px;
+     width: 555px;
+     background: linear-gradient(135deg, black, white);
+     border-radius: 20px;
+     transition: 0.5s;
+    }
+    .card:hover .card_img{
+      left: 175%;
+    }
+    .card_img h3 {
+      color: black;
+    }
   </style>
 
   <body>  
@@ -91,6 +116,11 @@
                     <a href="/add_reflection/" class="paper-btn btn-secondary">Add Reflection</a>
                   </div>
               </div>
+
+              <div class='card_img'>
+                <h3>{{user.username}}'s Journal</h3>
+              </div>
+
             </div>
           </div>
           <br>
@@ -224,7 +254,8 @@
               </tbody>
             </table>
           </div><!--Table Container-->
-      </div><!--Col-->
+
+        </div><!--Col-->
 
 
     </div>
