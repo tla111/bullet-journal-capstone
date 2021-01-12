@@ -16,6 +16,7 @@ class BlogModel(models.Model):
     body = models.TextField(max_length=380)
     tags = models.CharField(max_length=100)
     list_date = models.DateTimeField(default=timezone.now)
+<<<<<<< HEAD
     like_dislike_choices = (('Like', 'Like'), ('Dislike', 'Dislike'))
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
@@ -29,3 +30,17 @@ class CommentModel(models.Model):
     list_date = models.DateTimeField(default=timezone.now)
     tags = models.CharField(max_length=100)
 
+=======
+
+    def __str__(self):
+        return self.title
+
+
+class CommentModel(models.Model):
+    post = models.ForeignKey(
+        BlogModel, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    context = models.TextField(max_length=280)
+    created_date = models.DateTimeField(default=timezone.now)
+>>>>>>> b3b5721825e083bab371a6dd837a749110a6ca31

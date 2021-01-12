@@ -36,9 +36,11 @@
     </div>
     {% endfor %}
 {% endif %}
+  <h3>{{title}}</h3>
   <form method="post">
-    {% csrf_token %} {{ form.as_p }}
-    <button><input type="submit" value="Submit" /></button>
+    {% csrf_token %}
+     {{ form.as_p }}
+    <button><input type="submit" value="{{BTN_Text}}" /></button>
   </form>
 </div>
 <script

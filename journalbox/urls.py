@@ -49,7 +49,7 @@ urlpatterns = [
          DeleteAssignmentView.as_view()),
     path('admin/', admin.site.urls),
     # path('login/', authviews.index, name="login"),
-    # path('register/', authviews.register, name="register"),
+    # path('register/', authviews.register, name="register"),git
     # path('logout/', authviews.logout_view, name="logout"),
     path('', home, name="home"),
     path('login/', index, name="login"),
@@ -61,6 +61,7 @@ urlpatterns = [
     path('search/', views.search, name="search"),
     path('edit_post/<int:id>/', views.edit_post, name="edit_post"),
     path('delete_post/<int:id>/', views.delete_post, name="delete_post"),
+
 
 
 ]

@@ -63,15 +63,16 @@ def dislike_view(request, blogpost_id):
 # >>>>>>> 80c5cbb4bdbea7a49a5c9e58846f70f2fb80d7fa
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import BlogModel
-from .forms import BlogForm
+from .models import BlogModel, CommentModel
+from journaluser.models import BulletJournalUser
+from .forms import BlogForm, CommentForm
 from django.contrib import messages
 
 
 def blog_index(request):
-    posts = BlogModel.objects.order_by('-list_date').all()
+    results = BlogModel.objects.order_by('-list_date').all()
     context = {
-        'posts': posts
+        'results': results
     }
     return render(request, "blog/index.html", context)
 
@@ -93,7 +94,7 @@ def create_post(request):
             return redirect('create_post')
     form = BlogForm()
     context = {
-        'title': 'Create Post',
+        'title': 'Celebrate an Achievement',
         "BTN_Text": 'Post it!',
         'form': form
     }
@@ -101,18 +102,15 @@ def create_post(request):
 
 
 def search(request):
-    search_list = BlogModel.objects.order_by('-list_date')
+    search_tag = BlogModel.objects.order_by('-list_date')
 
-    if 'keywords' in request.GET:
-        keywords = request.GET['keywords']
-        if keywords:
-            print(keywords)
-            search_list = search_list.filter(tags__icontains=keywords)
+    if 'tags' in request.GET:
+        tags = request.GET['tags']
+        if tags:
+            search_tag = search_tag.filter(tags__icontains=tags)
 
     context = {
-        "results": search_list,
-        "keywords": keywords
-
+        "results": search_tag
     }
     return render(request, 'blog/results.html', context)
 
@@ -143,6 +141,7 @@ def delete_post(request, id):
     return redirect('blog')
 
 
+<<<<<<< HEAD
 # def create_comment(request):
 #     if request.method == "POST":
 #         form = CommentForm(request.POST)
@@ -165,3 +164,40 @@ def delete_post(request, id):
 #         'form': form
 #     }
 #     return render(request, 'forms/form.html', context)
+=======
+def article(request, id):
+    results = BlogModel.objects.get(id=id)
+    comments = CommentModel.objects.filter(
+        post=results.id).order_by('-created_date')
+
+    context = {
+        'results': results,
+        'comments': comments
+    }
+
+    return render(request, 'blog/article.html', context)
+
+
+def comment(request, id):
+    post = get_object_or_404(BlogModel, id=id)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            CommentModel.objects.create(
+                post=post,
+                context=data['context'],
+                author=request.user
+            )
+            return redirect('blog')
+        else:
+            messages.error(request, 'Comment Text Exceeds 280 Characters')
+            return redirect('create_post')
+    form = CommentForm()
+    context = {
+        'title': 'Celebrate an Achievement',
+        "BTN_Text": 'Post it!',
+        'form': form
+    }
+    return render(request, 'forms/form.html', context)
+>>>>>>> b3b5721825e083bab371a6dd837a749110a6ca31
