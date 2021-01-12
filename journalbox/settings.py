@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 import os
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = str(os.getenv("SECRET_KEY"))
+# SECRET_KEY = "citbp9&pl!vn&&s8-6k9j2v8jj16wx&%bo7^k&2g$*8r!i+y5c"
 
 
 # DELETE IF I AM DOING .ENV
@@ -28,10 +31,12 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 DEBUG = False
 DEBUG404 = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
