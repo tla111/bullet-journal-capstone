@@ -144,8 +144,3 @@ def edit_post(request, id):
 def delete_post(request, id):
     BlogModel.objects.filter(id=id).delete()
     return redirect('blog')
-<<<<<<< HEAD
-
-
-=======
->>>>>>> d16801c27fcf08815a5c3da59487c67ad4165daf

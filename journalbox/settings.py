@@ -31,7 +31,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 DEBUG404 = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["localhost",
+                 "127.0.0.1"]
 
 
 # Application definition
@@ -51,7 +52,6 @@ INSTALLED_APPS = [
 
 
     'django.contrib.humanize'
-# >>>>>>> 7ce28d065b921d4f481895d355dd87fc0ada2327
 ]
 
 MIDDLEWARE = [

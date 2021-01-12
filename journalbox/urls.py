@@ -63,5 +63,5 @@ urlpatterns = [
     path('search/', views.search, name="search"),
     path('edit_post/<int:id>/', views.edit_post, name="edit_post"),
     path('delete_post/<int:id>/', views.delete_post, name="delete_post"),
-# >>>>>>> 7ce28d065b921d4f481895d355dd87fc0ada2327
+
 ]
