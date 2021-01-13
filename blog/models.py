@@ -10,6 +10,8 @@ class BlogModel(models.Model):
     body = models.TextField(max_length=380)
     tags = models.CharField(max_length=100)
     list_date = models.DateTimeField(default=timezone.now)
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
