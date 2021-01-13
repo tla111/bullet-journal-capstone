@@ -26,6 +26,11 @@
         <h1 class="article-title">{{results.title}}</h1>
         <p class="article-meta">Written by {{results.author}} {{results.list_date| timesince}} ago</a></p>
         <p>{{results.body}}</p>
+        <div>
+        <a href="/upvote/{{results.id}}/"><i class="fas fa-hand-spock"></i>Like!,  {{results.likes}}</a>
+        <hr>
+        <a href="/downvote/{{results.id}}/"><i class="fas fa-lemon"></i>Dislike!,  {{results.dislikes}}</a>
+        </div>
         {% if post.author.id  != request.user.id %}
         <a href="/comment/{{results.id}}/">Make a Comment</a>
         {% endif %}

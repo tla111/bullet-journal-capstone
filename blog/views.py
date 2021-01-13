@@ -10,18 +10,6 @@ from blog.forms import BlogForm, CommentForm
 # Create your views here.
 
 
-def like_view(request,id):
-    post = BlogModel.objects.filter(id=BlogModel_id).first()
-    post.likes += 1
-    post.save()
-    return redirect('blog_homepage.html')
-
-
-def dislike_view(request, blogpost_id):
-    post = BlogModel.objects.filter(id=BlogModel_id).first()
-    post.likes += 1
-    post.save()
-    return redirect('blog_homepage.html')
 
 # def add_post(request):
 #     html = "forms/forms.html"
@@ -57,10 +45,10 @@ def dislike_view(request, blogpost_id):
 #         'title': 'Edit Ticket Screen'
 #     })
 
-# def all_blogs(request):
-#     blogs = Blog.objects.order_by('-date')
-#     return render(request, 'forms/blogs.html', {'blogs': blogs})
-# >>>>>>> 80c5cbb4bdbea7a49a5c9e58846f70f2fb80d7fa
+def all_blogs(request):
+    blogs = Blog.objects.order_by('-date')
+    return render(request, 'forms/blogs.html', {'blogs': blogs})
+
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import BlogModel, CommentModel
@@ -140,31 +128,6 @@ def delete_post(request, id):
     BlogModel.objects.filter(id=id).delete()
     return redirect('blog')
 
-
-<<<<<<< HEAD
-# def create_comment(request):
-#     if request.method == "POST":
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             data = form.cleaned_data
-#             BlogModel.objects.create(
-#                 title=data['title'],
-#                 body=data['body'],
-#                 tags=data['tags'],
-#                 author=request.user
-#             )
-#             return redirect('blog')
-#         else:
-#             messages.error(request, 'Body Text Exceeds 300 Characters')
-#             return redirect('create_comment')
-#     form = BlogForm()
-#     context = {
-#         'title': 'Create Comment',
-#         "BTN_Text": 'Post it!',
-#         'form': form
-#     }
-#     return render(request, 'forms/form.html', context)
-=======
 def article(request, id):
     results = BlogModel.objects.get(id=id)
     comments = CommentModel.objects.filter(
@@ -200,4 +163,15 @@ def comment(request, id):
         'form': form
     }
     return render(request, 'forms/form.html', context)
->>>>>>> b3b5721825e083bab371a6dd837a749110a6ca31
+
+def up_vote(request, id):
+    post = BlogModel.objects.get(id=id)
+    post.likes += 1
+    post.save()
+    return redirect('blog')
+
+def down_vote(request, id):
+    post = BlogModel.objects.get(id=id)
+    post.dislikes += 1
+    post.save()
+    return redirect('blog')
