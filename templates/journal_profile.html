@@ -66,6 +66,108 @@
       width: 100px;
       height: 55px;
     }
+    .card_box {
+      position: relative;
+      border-radius: 20px;
+      background: linear-gradient(135deg, silver, white)
+    }
+    .card_img {
+     position: absolute;
+     bottom: 0;
+     left: 50%;
+     transform: translateX(-50%);
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     height: 296px;
+     width: 555px;
+     background: linear-gradient(135deg, silver, white);
+     border-radius: 20px;
+     transition: 0.5s;
+    }
+    .card:hover .card_img{
+      left: 175%;
+    }
+    .card_img h2 {
+      color: black
+    }
+    .dark_mode {
+      background-color: #121212;
+      color: white;
+    }
+    .dark_header {
+      color: black;
+    }
+    .text_white {
+      color: white !important;
+    }
+    tr, th, td {
+      font-size: 20px;
+    }
+    .skew_container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container_box {
+      position: relative;
+      max-width: 450px;
+      transform: skewY(-20deg);
+    }
+    .container_box .imgBx{
+      position: relative;
+      width: 100%;
+      height: 180px;
+      transform-origin: bottom;
+      transform: skewX(45deg);
+    }
+    .container_box .imgBx h1 {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      max-width: 100%;
+      transition: 0.5s;
+    }
+    .container_box .imgBx:hover h1:nth-child(3) {
+      transform: translate(100px, -100px);
+    } 
+    .container_box .imgBx:hover h1:nth-child(2) {
+      transform: translate(50px, -50px);
+      opacity: 0.5;
+    } 
+     .container_box .imgBx:hover h1:nth-child(1) {
+      transform: translate(0px, -0px);
+      opacity: 0.1;
+    } 
+    .container_box h2 {
+      position: relative;
+    }
+    .container_box .skew {
+      transform-origin: top;
+      transform: skewX(45deg);
+    }
+    .container_box .skew h3 {
+      position: relative;
+      padding: 10px;
+      display: inline-block;
+      background: transparent;
+      transform-origin: top;
+      transform: skewX(-45deg);
+    }
+    .container_box .skew p {
+      width: 75%;
+      text-align: center;
+    }
+    .hide_skew {
+     color: #F5FFFA !important;
+    }
+
+    .hide_skew p {
+      background-color: gray;
+    }
+
+    
   </style>
 
   <body>  
@@ -74,7 +176,7 @@
       <div class="col first_col">
 
     
-          <div class="card user_card" style="width: 28em; height: 15rem">
+          <div class="card card_box user_card" style="width: 28em; height: 15rem">
             <div class="card-body card_body_contain">
 
           <div class="navbar_box">
@@ -84,13 +186,20 @@
           </div>
 
               <div class='profile_container'>
-                  <h3>{{user.username}}'s Journal</h3>
+                  <h3 id="motivation_header">You Can Do It!</h3>
                   
                   <div class="profile_buttons">
                     <a href="/add_assignment/" class="paper-btn btn-secondary">Add Assignment</a>
                     <a href="/add_reflection/" class="paper-btn btn-secondary">Add Reflection</a>
+                    <a class="paper-btn btn-secondary" id="change_me">Dark Mode</a>
                   </div>
               </div>
+
+              <div class='card_img'>
+                <h2>{{user.username}}'s Journal</h2> 
+                <h4 id='assignment_header'>Assignments Need to Complete: {{count}}</h4>
+              </div>
+
             </div>
           </div>
           <br>
@@ -99,7 +208,7 @@
           {% for post in reflection %}
           <div class="collapsible">
             <input id=collapsible{{post.id}} type="checkbox" name="collapsible">
-            <label for=collapsible{{post.id}}>{{post.title}}</label>
+            <label for=collapsible{{post.id}} id="post_title">{{post.title}}</label>
             <div class="collapsible-body">
               <div class="reflection_container">
                 <div class="card" style="width: 26rem;">
@@ -121,6 +230,21 @@
             </div>
           </div>
           {% endfor %}
+
+          <div class="skew_container">
+            <div class="container_box">
+                <!-- <div class="imgBx">
+                  <h1 class="hide_skew">Hi</h1>
+                  <h1 class="hide_skew">Hi</h1>
+                  <h1 class="hide_skew">Hi</h1>
+                </div> -->
+                <h2 class="hide_skew">Learn Every Day</h2>
+                <div class="skew">
+                  <h4 class="hide_skew">"Learning is the only thing the mind never exhaust, never fears, and never regret"</h4>
+                  <h3 href="#" class="hide_skew">Leonardo Da Vinci</h3>
+                </div>
+              </div>
+          </div>
         
         </div><!--col-->
         
@@ -224,11 +348,32 @@
               </tbody>
             </table>
           </div><!--Table Container-->
-      </div><!--Col-->
+
+        </div><!--Col-->
 
 
     </div>
   </div>
+
+  <script>
+      let mode_button = document.querySelector("#change_me")
+      let assignments_header = document.querySelector("#assignment_header")
+      let motivate_header = document.querySelector("#motivation_header")
+      let post_title = document.querySelector("#post_title")
+      let hide_skew = document.querySelectorAll(".hide_skew")
+
+
+      mode_button.addEventListener("click", function(){
+        document.body.classList.toggle('dark_mode')
+        assignments_header.classList.toggle('dark_header')
+        motivate_header.classList.toggle('dark_header')
+        post_title.classList.toggle('text_white')
+        hide_skew.classList.toggle('text_white')
+        
+      })
+
+
+  </script>
 
   </body>
 </html>
