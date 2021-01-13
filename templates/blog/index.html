@@ -30,13 +30,16 @@
         text-decoration: none;
         transition: all 0.3s ease-in;
     }
-    .my-bg {
-        background-color: #2E3233;
+
+    .my-bg{
+         background-color: #2E3233;
     }
+
+
 </style>
 
 <br/>
-{% comment %} <div class="container"> {% endcomment %}
+
 <div class="contianer-fluid">
     {% if user.is_authenticated %}
         <div class="navbar_box">
@@ -44,6 +47,10 @@
             <a href="{% url 'journal' %}" class="paper-btn btn-info">Your Journal</a>
             <a href="/create_post" class="paper-btn btn-info">Create Post</a>
             <a href="{% url 'logout' %}" class="paper-btn btn-info">Logout</a>
+        </div>
+    {% else %}
+        <div class="navbar_box">
+            <a href="/" class="paper-btn btn-info">Home</a>
         </div>
     {% endif %}
 </div>
@@ -56,7 +63,7 @@
             <form action="/search">
                 <div class="row flex-middle">
                     <div class="col sm-12">
-                        <div class="form-group">
+                        <div class="form-group background-primary">
                             <input class="input-block" type="text" name="tags" id="paperInputs2" placeholder="Search by Tags" style="color: #fff;">
                         </div>
                     </div>
@@ -70,7 +77,7 @@
 </div>
 
 <div class="container-fluid my-container">
-    <div class="row">
+    <div class="row flex-center">
         {% for post in results %}
             <div class="card margin-small display-card">
              <a class="card-link" href="/article/{{post.id}}">
@@ -80,10 +87,12 @@
                     <p class="card-text">{{post.body|truncatechars:50}}</p>
                     <hr></a>
                     {% if post.author.id  != request.user.id %}
-                        <p>Tags: {{post.tags}}</p>
+                        <p>Tag: {{post.tags}}</p>
+                        <p> Comments: {{post.comments.count}} </p>
                     {% else %}
-                        <a class="card-link text-warning" href="/delete_post/{{post.id}}">Delete</a>
-                        <a class="card-link text-primary" href="/edit_post/{{post.id}}">Edit Post</a>
+                        <p>Comments: {{post.comments.count}} </p>
+                        <a class="paper-btn btn-danger" popover-top=" ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
+                        <a  class="paper-btn btn-success"  href="/edit_post/{{post.id}}">Edit Post</a>
                     {% endif %}
                 </div>
             </div>
@@ -91,3 +100,5 @@
     </div>
 </div>
 {% endblock %}
+
+{% comment %} class="paper-btn btn-info" {% endcomment %}
