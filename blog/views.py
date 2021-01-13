@@ -112,3 +112,17 @@ def comment(request, id):
         'form': form
     }
     return render(request, 'forms/form.html', context)
+
+
+def up_vote(request, id):
+    post = BlogModel.objects.get(id=id)
+    post.likes += 1
+    post.save()
+    return redirect('blog')
+
+
+def down_vote(request, id):
+    post = BlogModel.objects.get(id=id)
+    post.dislikes += 1
+    post.save()
+    return redirect('blog')
