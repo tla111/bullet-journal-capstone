@@ -9,9 +9,9 @@ class BlogForm(forms.ModelForm):
         fields = ['title', 'body', 'tags']
 
         widgets = {
-            'title': forms.TextInput(attrs={'placeholder': 'Title of Your Achievement', 'id': "paperInputs2"}),
+            'title': forms.TextInput(attrs={'placeholder': 'Your Achievement', 'id': "paperInputs2"}),
             'body': forms.Textarea(attrs={'placeholder': 'Enter a description of your achievement here'}),
-            'tags': forms.TextInput(attrs={'placeholder': 'Keywords of excitement', 'id': "paperInputs2"}),
+            'tags': forms.TextInput(attrs={'placeholder': 'Keywords', 'id': "paperInputs2"}),
         }
 
 

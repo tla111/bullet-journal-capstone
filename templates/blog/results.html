@@ -29,6 +29,9 @@
         text-decoration: none;
         transition: all 0.3s ease-in;
     }
+    .my-bg{
+         background-color: #2E3233;
+    }
 </style>
 
 <br/>
@@ -38,28 +41,32 @@
         <div class="navbar_box">
             <a href="/" class="paper-btn btn-info">Home</a>
             <a href="{% url 'journal' %}" class="paper-btn btn-info">Your Journal</a>
+            <a href="{% url 'blog' %}" class="paper-btn btn-info">Blog</a>
             <a href="/create_post" class="paper-btn btn-info">Create Post</a>
             <a href="{% url 'logout' %}" class="paper-btn btn-info">Logout</a>
         </div>
+    {% else %}
+            <a href="/" class="paper-btn btn-info">Home</a>
+            <a href="{% url 'blog' %}" class="paper-btn btn-info">Blog</a>
     {% endif %}
 </div>
 <hr/>
 
 <div class="container" >
-    <div class="border margin-large my-card my-container">
+    <div class="border margin-large my-card my-container my-bg">
         <div class="card-body">
             <h4 class="card-title" style="color: #fff;">Search For Achievements by Tag</h4>
             <form action="/search">
                 <div class="row flex-middle">
                     <div class="col sm-12">
-                        <div class="form-group">
+                        <div class="form-group background-primary">
                             <input class="input-block" type="text" name="tags" id="paperInputs2" placeholder="Search by Tags" style="color: #fff;">
                         </div>
                     </div>
                 </div>
                 <div class="submit-btn">
                     <button type="submit" class="paper-btn btn-primary" value="Primary">Search</button>
-                    <a href="/blog" class="paper-btn btn-info-outline">All Post</a>
+                    {% comment %} {% if user.is_authenticated %}<a href="/blog" class="paper-btn btn-info-outline">All Posts</a>{% endif %} {% endcomment %}
                 </div>
             </form>
         </div>
@@ -67,7 +74,7 @@
 </div>
 
 <div class="container-fluid my-container">
-    <div class="row">
+    <div class="row flex-center">
         {% for post in results %}
             <div class="card margin-small display-card">
                 <div class="card-body"><a class="card-link" href="/article/{{post.id}}">
@@ -78,8 +85,8 @@
                     {% if post.author.id  != request.user.id %}
                         <p>Tags: {{post.tags}}</p>
                     {% else %}
-                        <a class="card-link text-warning" href="/delete_post/{{post.id}}">Delete</a>
-                        <a class="card-link text-primary" href="/edit_post/{{post.id}}">Edit Post</a>
+                        <a class="paper-btn btn-danger" popover-top="ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
+                        <a class="paper-btn btn-success" href="/edit_post/{{post.id}}">Edit Post</a>
                     {% endif %}
                 </div>
             </div>

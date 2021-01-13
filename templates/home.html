@@ -23,12 +23,12 @@
    <a href="{% url 'logout' %}" class="paper-btn btn-info">Logout</a>
 </div>
 
-<h1>Hi {{ user|capfirst }} Welcome 🤗 !!!</h1>
+<h2>Hi {{ user|capfirst }} Welcome 🤗 !!!</h2>
 
 {% else %}
 
 <div class="navbar_box">
- <a href="{% url 'register' %}" class="paper-btn btn-info"> New User: Register Here!</a>
+ <a href="{% url 'register' %}" class="paper-btn btn-info"> New User: Sign Up Here!</a>
  <a href="{% url 'login' %}" class="paper-btn btn-info">Login</a>
  <a href="{% url 'blog' %}" class="paper-btn btn-info">Check out Blogs</a>
 </div>
@@ -38,14 +38,29 @@
   {% endif %}
 
 <div class="row flex-center">
-  <div class="sm-4 col"><b>Your Personal Bullet Journal!</b><br/>
-   Uses: Bullet journal, or bullet journaling, 
-   is a creative way to schedule your day, week, month, or year.
-   A bullet journal is also used to keep track of what you have done or what you haven't.
-   Yasss, stay on top of your academics and track mental health-related ideas.
-   {% if user.is_authenticated %}<h3> We hope You are enjoying the site!</h3>{% endif %}
-   <h6>The Creators: <br/> Matthew Morris, Tim La, Wesley Salesberry, Stephanie Guirand</h6>
-  </div>
+{% comment %} <div class="sm-4 col"> {% endcomment %}
+ {% comment %} <div class="card" > {% endcomment %}
+  <div class="card" style="width: 20rem;" >  
+  <div class="card-body">
+    <h4 class="card-title"><b>Your Personal Bullet Journal!</b><br/></h4>
+    <h5 class="card-subtitle">Uses:</h5> 
+    <p class="card-text"> Bullet journal, or bullet journaling, 
+    is a creative way to schedule your day, week, month, or year.
+    A bullet journal is also used to keep track of what you have done or what you haven't.
+    Yasss, stay on top of your academics and track mental health-related ideas.</p>
+    <h6>The Creators: <br/> Matthew Morris, Tim La, Wesley Salesberry, Stephanie Guirand</h6>
+   {% comment %} </div> {% endcomment %}
+   {% if user.is_authenticated %}
+     {% comment %} <div class="card" style="width: 20rem;"> {% endcomment %}
+    <div class="card-body"> 
+      <h3 class="card-text"> We hope You are enjoying the site!</h3>
+    </div>
+    {% comment %} </div> {% endcomment %}
+   {% endif %}
+ </div>
+ </div>
+  
+
   <div class="sm-4 col journal_image">
   <img
    src="{% static 'authentication/journal3.jpeg' %}"
@@ -53,23 +68,48 @@
   </div>
 </div>
 
+
 <div class="row">
   <div class="col-4 col">
-  <p class="text-secondary">Plan</p> 
-    Make better task arrangements by having a high-level view of your whole week. 
-    Our create your list helps you achieve higher productivity while maintaining balance with your schedule.
+ <div class="card" >
+ {% comment %} style="width: 15rem;" {% endcomment %}
+    <p class="card-header text-danger">PLAN</p> 
+   <div class="card-body">
+    <h5 class="card-title">  Make better task arrangements:</h5> 
+    <p class="card-text">by having a view of your week. 
+     Our site will help you achieve this while maintaining balance.</p>
+   </div>
   </div>
+ </div>
+
+  
+  
+ <div class="col-4 col">
+  <div class="card" >
+  {% comment %} style="width: 15rem;" {% endcomment %}
+    <p class="card-header text-warning">TRACK</p>
+   <div class="card-body">
+    <h5 class="card-title"> Keep up with important practices:</h5>
+    <p class="card-text"> exercise, water consumption, academics, book reading etc. 
+     Live life with momentum.</p>
+   </div>
+  </div>
+ </div>
+  
+
   <div class="col-4 col">
-  <p class="text-warning">Track</p>
-    Keep up with important practices: meditation, exercise, water consumption, academics, book reading etc. 
-    Live life with momentum.
+   <div class="card" >
+   {% comment %} style="width: 15rem;" {% endcomment %}
+    <p class="card-header text-success">LISTS</p>
+    <div class="card-body">
+     <h5 class="card-title">Always know your progress toward a goal:</h5> 
+      <p class="card-text"> by tracking to-do items. 
+       Tasks in lists can be edited know exactly when to do what.</p>
+    </div>
+   </div>
   </div>
-  <div class="col-4 col">
-  <p class="text-success">Lists</p>
-    Always know your progress toward a goal by tracking to-do items via create your list. 
-    Tasks in lists can be edited so you know exactly when to do what.
-  </div>
-</div>
+
+
 
 
 </div>

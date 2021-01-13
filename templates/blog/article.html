@@ -17,19 +17,20 @@
 <div class="container-fluid margin-left-medium"> 
   <div class="navbar_box">
     <a href="/" class="paper-btn btn-info">Home</a>
+    <a href="{% url 'blog' %}" class="paper-btn btn-info">Blog</a>
     {% if user.is_authenticated %}<a href="{% url 'blog' %}" class="paper-btn btn-info">Back to Blog</a>{% endif %}
   </div>
 </div>
 
-<div class="container">
+<div class="container margin-center-medium">
     <article class="article">
         <h1 class="article-title">{{results.title}}</h1>
-        <p class="article-meta">Written by {{results.author}} {{results.list_date| timesince}} ago</a></p>
+        <p class="article-meta">Written by {{results.author|capfirst}} {{results.list_date| timesince}} ago</a></p>
         <p>{{results.body}}</p>
         {% if post.author.id  != request.user.id %}
-        <a href="/comment/{{results.id}}/">Make a Comment</a>
+        <a href="/comment/{{results.id}}/" class="paper-btn btn-info">Make a Comment</a>
         {% endif %}
-        <a id="flip"> {{comments.count}} Comments</a>
+        <a id="flip" class="paper-btn btn-info"> {{comments.count}} Comment{{comments.count|pluralize}}</a>
   <div class="container-fluid my-container" id="panel">
      <div class="row">
        {% for post in comments %}
