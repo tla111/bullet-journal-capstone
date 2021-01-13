@@ -66,7 +66,7 @@
       width: 100px;
       height: 55px;
     }
-    .card {
+    .card_box {
       position: relative;
       border-radius: 20px;
       background: linear-gradient(135deg, silver, white)
@@ -92,6 +92,17 @@
     .card_img h2 {
       color: black
     }
+    .dark_mode {
+      background-color: #121212;
+      color: white;
+    }
+    .dark_header {
+      color: black;
+    }
+    tr, th, td {
+      font-size: 20px;
+    }
+    
   </style>
 
   <body>  
@@ -100,7 +111,7 @@
       <div class="col first_col">
 
     
-          <div class="card user_card" style="width: 28em; height: 15rem">
+          <div class="card card_box user_card" style="width: 28em; height: 15rem">
             <div class="card-body card_body_contain">
 
           <div class="navbar_box">
@@ -110,18 +121,18 @@
           </div>
 
               <div class='profile_container'>
-                  <h3>You Can Do It!</h3>
+                  <h3 id="motivation_header">You Can Do It!</h3>
                   
                   <div class="profile_buttons">
                     <a href="/add_assignment/" class="paper-btn btn-secondary">Add Assignment</a>
                     <a href="/add_reflection/" class="paper-btn btn-secondary">Add Reflection</a>
-                    <a href="/add_reflection/" class="paper-btn btn-secondary">Add Color</a>
+                    <a class="paper-btn btn-secondary" id="change_me">Dark Mode</a>
                   </div>
               </div>
 
               <div class='card_img'>
                 <h2>{{user.username}}'s Journal</h2> 
-                <h4>Assignments Need to Complete: {{count}}</h4>
+                <h4 id='assignment_header'>Assignments Need to Complete: {{count}}</h4>
               </div>
 
             </div>
@@ -263,6 +274,20 @@
 
     </div>
   </div>
+
+  <script>
+      let mode_button = document.querySelector("#change_me")
+      let assignments_header = document.querySelector("#assignment_header")
+      let motivate_header = document.querySelector("#motivation_header")
+
+
+      mode_button.addEventListener("click", function(){
+        document.body.classList.toggle('dark_mode')
+        assignments_header.classList.toggle('dark_header')
+        motivate_header.classList.toggle('dark_header')
+      })
+
+  </script>
 
   </body>
 </html>
