@@ -63,9 +63,12 @@ urlpatterns = [
     path('delete_post/<int:id>/', views.delete_post, name="delete_post"),
     path('comment/<int:id>/', views.comment, name="comment"),
     path('article/<int:id>/', views.article, name="article"),
+<<<<<<< HEAD
     path('upvote/<int:id>/', views.up_vote, name="upvote"),
     path('downvote/<int:id>/', views.down_vote, name="downvote"),
 
 
 
+=======
+>>>>>>> 262a2949a2df76066144f5e57778f4657fcef7fb
 ]
