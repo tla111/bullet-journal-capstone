@@ -174,4 +174,4 @@ def down_vote(request, id):
     post = BlogModel.objects.get(id=id)
     post.dislikes += 1
     post.save()
-    return redirect('blog')
+    redirect('blog')

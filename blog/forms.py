@@ -11,18 +11,6 @@ class BlogForm(forms.ModelForm):
         fields = ['title', 'body', 'tags']
 
 
-# class CommentForm(forms.ModelForm):
-#     class Meta:
-#         model = CommentModel
-#         fields =['title', 'body', 'tags']
-#
-#         widgets = {
-#             'title': forms.TextInput(attrs={'placeholder': 'Title of Your Achievement', 'id': "paperInputs2"}),
-#             'body': forms.Textarea(attrs={'placeholder': 'Enter a description of your achievement here'}),
-#             'tags': forms.TextInput(attrs={'placeholder': 'Keywords of excitement', 'id': "paperInputs2"}),
-#         }
-
-
 class CommentForm (forms.ModelForm):
     class Meta:
         model = CommentModel
