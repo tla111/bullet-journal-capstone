@@ -6,7 +6,7 @@ class BlogForm(forms.ModelForm):
 
     class Meta:
         model = BlogModel
-        fields = ['title', 'body', 'tags']
+        fields = ['title', 'body', 'tags', 'blog_image']
 
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Your Achievement', 'id': "paperInputs2"}),

@@ -1,5 +1,5 @@
-{% load static %}
 {% extends 'base.html' %}
+{% load static %}
 
 {% block  content%}
 <style>
@@ -83,6 +83,10 @@
     .card:hover .card-image{
       bottom: 0%;
     }
+    img {
+        height: 370px;
+        width: 330px;
+    }
 
 </style>
 
@@ -161,8 +165,8 @@
                         {% endif %}
                         <div class="card-image">
                             <img
-                            src="{% static 'authentication/journal3.jpeg' %}"
-                            alt="BJM Logo" />
+                            src="{{post.blog_image.url}}"
+                            alt="Blog Image" />
                         </div>
                     </div>
 
@@ -174,7 +178,7 @@
     </div> 
     
 
-<div class="glide">
+<!-- <div class="glide">
   <div class="glide__track" data-glide-el="track">
     <ul class="glide__slides">
       {% for post in results %}
@@ -204,19 +208,16 @@
    <div class="glide__arrows" data-glide-el="controls">
     <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fa fa-angle-left"></i></button>
     <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fa fa-angle-right"></i></button>
-  </div>
-</div>
+  </div> -->
+
+</div><!--Carousel Container-->
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js" integrity="sha512-BXASbMmKLu+RC5TDnkupyhvrjiOQXILh/5zgIS8k5JAC71a73lNweVEg/X+9XJQ7GK22PH9WpztY3zqrji+xrQ==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <script>
-    new Glide('.glide', {
-        type: 'carousel',
-        startAt: 0,
-        perView: 3,
-    }).mount()
+    
 
      $(document).ready(function(){
     $('.carousel').carousel();

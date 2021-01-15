@@ -22,6 +22,7 @@ def create_post(request):
                 title=data['title'],
                 body=data['body'],
                 tags=data['tags'],
+                blog_image=data['blog_image'],
                 author=request.user
             )
             return redirect('blog')
@@ -118,11 +119,11 @@ def up_vote(request, id):
     post = BlogModel.objects.get(id=id)
     post.likes += 1
     post.save()
-    return redirect('article', id=id)
+    return redirect('blog')
 
 
 def down_vote(request, id):
     post = BlogModel.objects.get(id=id)
     post.dislikes += 1
     post.save()
-    return redirect('article', id=id)
+    return redirect('blog')
