@@ -10,12 +10,44 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
   crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.min.css" integrity="sha512-wCwx+DYp8LDIaTem/rpXubV/C1WiNRsEVqoztV0NZm8tiTvsUeSlA/Uz02VTGSiqfzAHD4RnqVoevMcRZgYEcQ==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css" integrity="sha512-wYsVD8ho6rJOAo1Xf92gguhOGQ+aWgxuyKydjyEax4bnuEmHUt6VGwgpUqN8VlB4w50d0nt+ZL+3pgaFMAmdNQ==" crossorigin="anonymous" />
+    
+
      <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
 
     <title>Journal</title>
   </head>
+
+  <style>
+    .dark_mode {
+          background-color: #121212;
+          color: white;
+        }
+  </style>
 <body>
+
+    <div class="navbar_box">
+      <a href="{% url 'register' %}" class="paper-btn btn-info"> New User: Sign Up Here!</a>
+      <a href="{% url 'login' %}" class="paper-btn btn-info">Login</a>
+      <a href="{% url 'blog' %}" class="paper-btn btn-info">Check out Blogs</a>
+      <a href="" class="paper-btn btn-info" id="change_me">Dark Mode</a>
+    </div>
+
     {% block content %}
     {% endblock %}
+
+    <script>
+      let mode_button = document.querySelector("#change_me")
+
+      mode_button.addEventListener("click", function(){
+        document.body.classList.toggle('dark_mode')
+      })
+      
+  </script>
+
 </body>
+
 </html>
