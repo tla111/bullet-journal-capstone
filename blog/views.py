@@ -15,7 +15,7 @@ def blog_index(request):
 
 def create_post(request):
     if request.method == "POST":
-        form = BlogForm(request.POST)
+        form = BlogForm(request.POST,request.FILES)
         if form.is_valid():
             data = form.cleaned_data
             BlogModel.objects.create(
