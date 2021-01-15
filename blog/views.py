@@ -3,12 +3,15 @@ from .models import BlogModel, CommentModel
 from journaluser.models import BulletJournalUser
 from .forms import BlogForm, CommentForm
 from django.contrib import messages
-
+from django.db.models import Count
 
 def blog_index(request):
     results = BlogModel.objects.order_by('-list_date').all()
+    toptags = BlogModel.objects.values_list('tags').annotate(tag_count=Count('tags')).order_by('-tag_count')
+    # print(results.tags)
     context = {
-        'results': results
+        'results': results,
+        'toptags': toptags,
     }
     return render(request, "blog/index.html", context)
 
@@ -114,15 +117,28 @@ def comment(request, id):
     return render(request, 'forms/form.html', context)
 
 
-def up_vote(request, id):
-    post = BlogModel.objects.get(id=id)
-    post.likes += 1
-    post.save()
-    return redirect('article', id=id)
+# def up_vote(request, id):
+#     post = BlogModel.objects.get(id=id)
+#     post.likes += 1
+#     post.save()
+#     return redirect('article', id=id)
 
 
-def down_vote(request, id):
-    post = BlogModel.objects.get(id=id)
-    post.dislikes += 1
-    post.save()
-    return redirect('article', id=id)
+# def down_vote(request, id):
+#     post = BlogModel.objects.get(id=id)
+#     post.dislikes += 1
+#     post.save()
+#     return redirect('article', id=id)
+
+
+# def comment_likes(request, id):
+#     post = CommentModel.objects.get(id=id)
+#     post.likes += 1
+#     post.save()
+#     return redirect('article', id=id)
+
+# def comment_likes(request, id):
+#     post = CommentModel.objects.get(id=id)
+#     post.likes += 1
+#     post.save()
+#     return redirect('article', id=id)

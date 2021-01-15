@@ -13,6 +13,10 @@
   padding: 50px;
   display: none;
 }
+
+#fas fa-hand-spock{
+
+}
 </style>
 <div class="container-fluid margin-left-medium"> 
   <div class="navbar_box">
@@ -27,11 +31,11 @@
         <h1 class="article-title">{{results.title}}</h1>
         <p class="article-meta">Written by {{results.author|capfirst}} {{results.list_date| timesince}} ago</a></p>
         <p>{{results.body}}</p>
-        <div>
-          <a href="/upvote/{{results.id}}/"><i class="fas fa-hand-spock"></i>Like!,  {{results.likes}}</a>
+        {% comment %} <div>
+          <a href="/upvote/{{results.id}}/"><i class="fas fa-hand-spock"></i> Like!,  {{results.likes}}</a>
           <hr>
-          <a href="/downvote/{{results.id}}/"><i class="fas fa-lemon"></i>Dislike!,  {{results.dislikes}}</a>
-        </div>
+          <a href="/downvote/{{results.id}}/"><i class="fas fa-lemon"></i> Dislike!,  {{results.dislikes}}</a>
+        </div> {% endcomment %}
         {% if post.author.id  != request.user.id %}
         <a href="/comment/{{results.id}}/" class="paper-btn btn-info">Make a Comment</a>
         {% endif %}
@@ -44,6 +48,11 @@
                     <h4 class="card-title">{{ post.title}}</h4>
                     <h5 class="card-subtitle">Created by {{ post.author }} {{post.created_date| timesince}} ago</h5>
                     <p class="card-text">{{post.context}}</p>
+                     {% comment %} <div>
+                        <a href="/likecomment/{{post.id}}/"><i class="fas fa-hand-spock"></i> Like!,  {{post.likes}}</a>
+                          <hr>
+                        <a href="/dislikecomment/{{post.id}}/"><i class="fas fa-lemon"></i> Dislike!,  {{post.dislikes}}</a>
+                    </div> {% endcomment %}
                 </div>
             </div>
         {% endfor %}

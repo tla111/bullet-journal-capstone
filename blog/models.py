@@ -24,3 +24,5 @@ class CommentModel(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     context = models.TextField(max_length=280)
     created_date = models.DateTimeField(default=timezone.now)
+    likes = models.IntegerField(default=0)
+    dislikes = models.IntegerField(default=0)
