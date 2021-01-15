@@ -18,7 +18,6 @@
         text-decoration: none;
         transition: all 0.3s ease-in;
     }
-
     .my-bg{
          background-color: #2E3233;
     }
@@ -87,7 +86,10 @@
         height: 370px;
         width: 330px;
     }
-
+    .navbar_box {
+        width: 50%;
+        margin-left: 10px;
+    }
 </style>
 
 <br/>
@@ -108,7 +110,7 @@
 </div>
 <br>
 
-<!-- <div class="container" >
+<div class="container" >
     <div class="border margin-large my-card my-container my-bg">
         <div class="card-body">
             <h4 class="card-title" style="color: #fff;">Search For Achievements by Tag</h4>
@@ -126,9 +128,9 @@
             </form>
         </div>
     </div>
-</div> -->
+</div> 
 
-    <div class="container test_container" >
+    {% comment %} <div class="container test_container" >
         <div class="card">
             <h4 class="card-title" style="color: #000;">Search For Achievements by Tag</h4>
             <form action="/search">
@@ -140,9 +142,9 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> {% endcomment %}
 
-<div class="container-fluid my-container"> 
+ {% comment %} <div class="container-fluid my-container"> 
      <div class="row flex-center carousel">
         {% for post in results %}
         <div class="card carousel-item card_container card-box">
@@ -177,10 +179,10 @@
             {% endfor %}
             <div class="swiper-pagination"></div>
         </div>
-    </div> 
+    </div>   {% endcomment %}
     
 
-<!-- <div class="glide">
+<div class="glide">
   <div class="glide__track" data-glide-el="track">
     <ul class="glide__slides">
       {% for post in results %}
@@ -210,7 +212,7 @@
    <div class="glide__arrows" data-glide-el="controls">
     <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fa fa-angle-left"></i></button>
     <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fa fa-angle-right"></i></button>
-  </div> -->
+  </div>
 
 </div><!--Carousel Container-->
 
@@ -218,10 +220,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js" integrity="sha512-BXASbMmKLu+RC5TDnkupyhvrjiOQXILh/5zgIS8k5JAC71a73lNweVEg/X+9XJQ7GK22PH9WpztY3zqrji+xrQ==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<script>
-    
-
-     $(document).ready(function(){
+<script>    
+    $(document).ready(function(){
     $('.carousel').carousel();
   });
 
