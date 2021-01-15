@@ -20,6 +20,7 @@ from blog import views
 from django.conf.urls import url
 from django.views.static import serve 
 from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
@@ -47,8 +48,14 @@ urlpatterns = [
     path('delete_post/<int:id>/', views.delete_post, name="delete_post"),
     path('comment/<int:id>/', views.comment, name="comment"),
     path('article/<int:id>/', views.article, name="article"),
+<<<<<<< HEAD
     # path('upvote/<int:id>/', views.up_vote, name="upvote"),
     # path('downvote/<int:id>/', views.down_vote, name="downvote"),
     # path('likecomment/<int:id>/', views.comment_dislikes, name="like"),
     # path('dislikecomment/<int:id>/', views.comment_dislikes, name="dislike"),
 ]
+=======
+    path('upvote/<int:id>/', views.up_vote, name="upvote"),
+    path('downvote/<int:id>/', views.down_vote, name="downvote"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> 9b47e38fdc6281bc2a362437e694c5d569f4fee5

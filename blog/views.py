@@ -18,13 +18,14 @@ def blog_index(request):
 
 def create_post(request):
     if request.method == "POST":
-        form = BlogForm(request.POST)
+        form = BlogForm(request.POST,request.FILES)
         if form.is_valid():
             data = form.cleaned_data
             BlogModel.objects.create(
                 title=data['title'],
                 body=data['body'],
                 tags=data['tags'],
+                blog_image=data['blog_image'],
                 author=request.user
             )
             return redirect('blog')
@@ -38,7 +39,7 @@ def create_post(request):
         'form': form
     }
     return render(request, 'forms/form.html', context)
-
+    
 
 def search(request):
     search_tag = BlogModel.objects.order_by('-list_date')
@@ -69,7 +70,7 @@ def edit_post(request, id):
     form = BlogForm(instance=post)
     context = {
         'form': form,
-        'BTN_Text': 'Up Date Post'
+        'BTN_Text': 'Update Post'
     }
 
     return render(request, 'forms/form.html', context)
@@ -117,6 +118,7 @@ def comment(request, id):
     return render(request, 'forms/form.html', context)
 
 
+<<<<<<< HEAD
 # def up_vote(request, id):
 #     post = BlogModel.objects.get(id=id)
 #     post.likes += 1
@@ -130,6 +132,13 @@ def comment(request, id):
 #     post.save()
 #     return redirect('article', id=id)
 
+=======
+def up_vote(request, id):
+    post = BlogModel.objects.get(id=id)
+    post.likes += 1
+    post.save()
+    return redirect('blog')
+>>>>>>> 9b47e38fdc6281bc2a362437e694c5d569f4fee5
 
 # def comment_likes(request, id):
 #     post = CommentModel.objects.get(id=id)
@@ -137,8 +146,16 @@ def comment(request, id):
 #     post.save()
 #     return redirect('article', id=id)
 
+<<<<<<< HEAD
 # def comment_likes(request, id):
 #     post = CommentModel.objects.get(id=id)
 #     post.likes += 1
 #     post.save()
 #     return redirect('article', id=id)
+=======
+def down_vote(request, id):
+    post = BlogModel.objects.get(id=id)
+    post.dislikes += 1
+    post.save()
+    return redirect('blog')
+>>>>>>> 9b47e38fdc6281bc2a362437e694c5d569f4fee5

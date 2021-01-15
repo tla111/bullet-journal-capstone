@@ -1,0 +1,39 @@
+<div class="container-fluid my-container"> 
+     <div class="row flex-center carousel">
+        {% for post in results %}
+            <div class="card display-card carousel-item card_container card_box">
+                <a class="card-link" href="/article/{{post.id}}" >
+                    <div class="card-body">
+                    <h4 class="card-title">{{ post.title}}</h4>
+                        <h5 class="card-subtitle">Created by {{ post.author }} {{post.list_date| timesince}} ago</h5>
+                        <p class="card-text">{{post.body|truncatechars:50}}</p>
+                        <hr>
+                        {% if post.author.id  != request.user.id %}
+                            <p>Tag: {{post.tags}}</p>
+                            <p> Comments: {{post.comments.count}} </p>
+                        {% else %}
+                            <p>Comments: {{post.comments.count}} </p>
+                            <div class="card_buttons">
+                                <a class="paper-btn btn-danger" popover-top=" ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
+                                <a  class="paper-btn btn-success"  href="/edit_post/{{post.id}}">Edit Post</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </a>
+                <div class="card-image">H1</div>
+            </div>
+            {% endfor %}
+            <div class="swiper-pagination"></div>
+        </div>
+    </div> 
+
+
+
+
+
+
+    new Glide('.glide', {
+        type: 'carousel',
+        startAt: 0,
+        perView: 3,
+    }).mount()

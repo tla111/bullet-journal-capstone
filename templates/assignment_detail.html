@@ -16,12 +16,45 @@
     .button_container {
       margin-top: 20px;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-around;
 
     }
     .button_container a {
-      width: 200px;
+      width: 180px;
       text-align: center;
+    }
+    .button_container :nth-child(1) {
+      background-color: skyblue;
+    }
+    .button_container :nth-child(2) {
+      background-color: pink;
+    }
+    .button_container :nth-child(3) {
+      background-color: greenyellow;
+    }
+    .button_container :nth-child(4) {
+      background-color: orchid;
+    }
+    .button_container :nth-child(5) {
+      background-color:rgba(255, 68, 0, 0.883)
+    }
+    .delete_button {
+      background-color: rgba(255, 0, 0, 0.829);
+      color: white !important;
+      text-align: center;
+    }
+    th {
+      font-size: 20px;
+    }
+    td {
+      font-size: 24px;
+    }
+    .delete_container {
+ 
+      width: 220px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 
@@ -35,30 +68,27 @@
         <th scope="col">Description</th>
         <th scope="col">Type</th>
         <th scope="col">Date Field</th>
-        <th scope="col">Delete Ticket</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr class='detail_container'>
           <td>{{assignment.title}}</td>
           <td>{{assignment.description}}</td>
           <td>{{assignment.assignment_type}}</td>
           <td>{{assignment.date_filed}}</td>
-        <td>
-            <a href='/delete_assignment/{{assignment.id}}' class="paper-btn btn-info-outline" popover-top="ARE YOU SURE❓">Delete</a>
-        </td>
       </tr>
     </tbody>
     </table>
   </div>
     
   <div class="button_container">
-      <a href="/lesson_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline ">Lesson</a>
-      <a href="/activity_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Activity</a>
-      <a href="/quiz_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Quiz</a>
-      <a href="/assessment_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Assessment</a>
-      <a href="/completed_assignment/{{assignment.id}}/" class="paper-btn btn-info-outline">Completed</a>
-      <a href="/journal/" class="paper-btn btn-info-outline">Return to Journal</a>
+      <a href="/lesson_assignment/{{assignment.id}}/" class="paper-btn ">Lesson</a>
+      <a href="/activity_assignment/{{assignment.id}}/" class="paper-btn">Activity</a>
+      <a href="/quiz_assignment/{{assignment.id}}/" class="paper-btn">Quiz</a>
+      <a href="/assessment_assignment/{{assignment.id}}/" class="paper-btn">Assessment</a>
+      <a href="/completed_assignment/{{assignment.id}}/" class="paper-btn">Completed</a>
+      <a href='/delete_assignment/{{assignment.id}}' class="paper-btn delete_button" popover-top="ARE YOU SURE❓">Delete</a>
+      <a href="/journal/" class="paper-btn btn-info">Return to Journal</a>
   </div>  
 
    

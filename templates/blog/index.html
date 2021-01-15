@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block  content%}
 <style>
@@ -7,35 +8,78 @@
         justify-content: center;
     }
     .my-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
         padding: 10px;
-    }
-    .my-container{
-        padding: 10px;
-    }
-    .submit-btn{
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
     .display-card{
-        width: 20rem; 
-        background-color: #2e3233; 
         color: #fff;
     }
-      .display-card a{
+    .display-card a{
         color: #fff;
         text-decoration: none;
         transition: all 0.3s ease-in;
     }
-
     .my-bg{
          background-color: #2E3233;
     }
-
-
+    .carousel {
+        width: 100%;
+    }
+    .card {
+        height: 250px !important;
+    }
+    .card-title {
+        text-align: center;
+    }
+    .search-button {
+        width: 100%;
+    }
+    .search-input {
+        color: black;
+    }
+    .col {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .card_container {
+        margin-top: -50px;
+        height: 470px !important;
+        width: 325px !important;
+        border: 1px solid greenyellow;
+    }
+    .card_buttons {
+        display: flex;
+    }
+    .card-box {
+        position: relative;
+        background: black;
+    }
+    .card-image {
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 460px;
+        width: 330px;
+        background: linear-gradient(135deg, blue, red);
+        transition: 0.5s;
+    }
+    .card:hover .card-image{
+      bottom: -30%;
+    }
+    img {
+        height: 470px;
+        width: 330px;
+    }
+    .navbar_box {
+        width: 50%;
+        margin-left: 10px;
+    }
 </style>
 
 <br/>
@@ -54,6 +98,7 @@
         </div>
     {% endif %}
 </div>
+<<<<<<< HEAD
 <hr/>
 {{toptags}}
 
@@ -71,35 +116,77 @@
                 </div>
                 <div class="submit-btn">
                     <button type="submit" class="paper-btn btn-primary" value="Primary">Search</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+=======
+<br>
 
-<div class="container-fluid my-container">
-    <div class="row flex-center">
-        {% for post in results %}
-            <div class="card margin-small display-card">
-             <a class="card-link" href="/article/{{post.id}}">
-                <div class="card-body">
-                   <h4 class="card-title">{{ post.title}}</h4>
-                    <h5 class="card-subtitle">Created by {{ post.author }} {{post.list_date| timesince}} ago</h5>
-                    <p class="card-text">{{post.body|truncatechars:50}}</p>
-                    <hr></a>
-                    {% if post.author.id  != request.user.id %}
-                        <p>Tag: {{post.tags}}</p>
-                        <p> Comments: {{post.comments.count}} </p>
-                    {% else %}
-                        <p>Comments: {{post.comments.count}} </p>
-                        <a class="paper-btn btn-danger" popover-top=" ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
-                        <a  class="paper-btn btn-success"  href="/edit_post/{{post.id}}">Edit Post</a>
-                    {% endif %}
+<div class="container test_container" >
+    <div class="card">
+        <h4 class="card-title" style="color: #000;">Search For Achievements by Tag</h4>
+        <form action="/search">
+            <div class="row flex-middle">
+                <div class="col sm-12">
+                        <input class="search-input" type="text" name="tags" id="paperInputs2" placeholder="Search by Tags" style="color: #000; font-size: 18px;">
+                    <button type="submit" class="paper-btn btn-primary search-button" value="Primary">Search</button>
+>>>>>>> 9b47e38fdc6281bc2a362437e694c5d569f4fee5
                 </div>
             </div>
-        {% endfor %}
+        </form>
     </div>
 </div>
+
+ <div class="container-fluid my-container"> 
+     <div class="row flex-center carousel">
+        {% for post in results %}
+        <div class="card carousel-item card_container card-box">
+            <a class="card-link" href="/article/{{post.id}}" >
+
+                <div class="card-body">
+                    <h4 class="card-title">{{ post.title}}</h4>
+                        <h5 class="card-subtitle">Created by {{ post.author }} {{post.list_date| timesince}} ago</h5>
+                        <p class="card-text">{{post.body|truncatechars:50}}</p>
+                        <hr>
+                        {% if post.author.id  != request.user.id %}
+                            <p>Tag: {{post.tags}}</p>
+                            <p><i class="fas fa-hand-spock"></i> Likes: {{post.likes}} </p>
+                            <p> Comments: {{post.comments.count}} </p>
+                        {% else %}
+                        <p>Tag: {{post.tags}}</p>
+                        <p><i class="fas fa-hand-spock"></i> Likes: {{post.likes}} </p>
+                        <p>Comments: {{post.comments.count}} </p>
+                        <!-- <a class="paper-btn btn-danger" popover-top=" ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
+                        <a  class="paper-btn btn-success"  href="/edit_post/{{post.id}}">Edit Post</a> -->
+                        {% endif %}
+                        <!-- <div class="card-image">
+                            {% if post.blog_image %}
+                                <img
+                                src="{{post.blog_image.url}}"
+                                alt="Blog Image" />
+                            {% endif %}
+                        </div> -->
+                </div>
+
+                </a>
+
+            </div>
+            {% endfor %}
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>   
+    
+
+</div><!--Carousel Container-->
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<script>    
+    $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+</script>
+
 {% endblock %}
 
-{% comment %} class="paper-btn btn-info" {% endcomment %}
+
+
+
