@@ -118,7 +118,7 @@ def comment(request, id):
     return render(request, 'forms/form.html', context)
 
 
-<<<<<<< HEAD
+
 # def up_vote(request, id):
 #     post = BlogModel.objects.get(id=id)
 #     post.likes += 1
@@ -132,13 +132,13 @@ def comment(request, id):
 #     post.save()
 #     return redirect('article', id=id)
 
-=======
+
 def up_vote(request, id):
     post = BlogModel.objects.get(id=id)
     post.likes += 1
     post.save()
     return redirect('blog')
->>>>>>> 9b47e38fdc6281bc2a362437e694c5d569f4fee5
+
 
 # def comment_likes(request, id):
 #     post = CommentModel.objects.get(id=id)
@@ -146,16 +146,15 @@ def up_vote(request, id):
 #     post.save()
 #     return redirect('article', id=id)
 
-<<<<<<< HEAD
+
 # def comment_likes(request, id):
 #     post = CommentModel.objects.get(id=id)
 #     post.likes += 1
 #     post.save()
 #     return redirect('article', id=id)
-=======
+
 def down_vote(request, id):
     post = BlogModel.objects.get(id=id)
     post.dislikes += 1
     post.save()
     return redirect('blog')
->>>>>>> 9b47e38fdc6281bc2a362437e694c5d569f4fee5
