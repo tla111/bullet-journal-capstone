@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block  content%}
+{% block  content %}
 <style>
     .container-fluid{
         display: flex;
@@ -119,7 +119,8 @@
         {% for post in results %}
         <div class="card carousel-item card_container card-box">
             <a class="card-link" href="/article/{{post.id}}" >
-
+       
+       
                 <div class="card-body">
                     <h4 class="card-title">{{ post.title}}</h4>
                         <h5 class="card-subtitle">Created by {{ post.author }} {{post.list_date| timesince}} ago</h5>
@@ -133,22 +134,25 @@
                         <p>Tag: {{post.tags}}</p>
                         <p><i class="fas fa-hand-spock"></i> Likes: {{post.likes}} </p>
                         <p>Comments: {{post.comments.count}} </p>
-                        <!-- <a class="paper-btn btn-danger" popover-top=" ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
-                        <a  class="paper-btn btn-success"  href="/edit_post/{{post.id}}">Edit Post</a> -->
+                        <a class="paper-btn btn-danger" popover-top=" ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
+                        <a  class="paper-btn btn-success"  href="/edit_post/{{post.id}}">Edit Post</a>
                         {% endif %}
-                        <!-- <div class="card-image">
+                        <div class="card-image">
                             {% if post.blog_image %}
                                 <img
                                 src="{{post.blog_image.url}}"
                                 alt="Blog Image" />
                             {% endif %}
-                        </div> -->
+                        </div>
                 </div>
 
                 </a>
 
-            </div>
-            {% endfor %}
+                </div>
+        {% endfor %}
+
+        
+            
             <div class="swiper-pagination"></div>
         </div>
     </div>   
@@ -164,7 +168,6 @@
     $('.carousel').carousel();
   });
 </script>
-
 {% endblock %}
 
 
