@@ -77,7 +77,7 @@
         align-items: center;
         height: 370px;
         width: 330px;
-        background: linear-gradient(135deg, silver, white);
+        background: linear-gradient(135deg, blue, red);
         transition: 0.5s;
     }
     .card:hover .card-image{
@@ -164,9 +164,11 @@
                             </div>
                         {% endif %}
                         <div class="card-image">
-                            <img
-                            src="{{post.blog_image.url}}"
-                            alt="Blog Image" />
+                            {% if post.blog_image %}
+                                <img
+                                src="{{post.blog_image.url}}"
+                                alt="Blog Image" />
+                            {% endif %}
                         </div>
                     </div>
 

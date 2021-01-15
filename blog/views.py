@@ -36,7 +36,7 @@ def create_post(request):
         'form': form
     }
     return render(request, 'forms/form.html', context)
-
+    
 
 def search(request):
     search_tag = BlogModel.objects.order_by('-list_date')
@@ -67,7 +67,7 @@ def edit_post(request, id):
     form = BlogForm(instance=post)
     context = {
         'form': form,
-        'BTN_Text': 'Up Date Post'
+        'BTN_Text': 'Update Post'
     }
 
     return render(request, 'forms/form.html', context)
