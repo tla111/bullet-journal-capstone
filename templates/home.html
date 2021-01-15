@@ -11,6 +11,110 @@
 
     <title>Journal</title>
   </head>
+  
+  <style>
+  :root {
+    --level-one: translateZ(3rem);
+    --level-two: translateZ(6rem);
+    --level-three: translateZ(9rem);
+
+    --fw-normal: 400;
+    --fw-bold: 700;
+
+    --clr: #F5FFFA;
+  }
+
+  .card-box {
+    width: 200px;
+  }
+
+  .card-bodyy {
+    text-align: center;
+    position: relative;
+    padding: 10em 5em;
+    transition: transform 3s;
+    background: white;
+    transform-style: preserve-3d;
+  }
+  
+  .card-box:hover .card-bodyy {
+    transform: rotateY(.5turn);
+  }
+
+  .card__front,
+  .card__back {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3em 2em;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    display: grid;
+    align-content: center:
+  }
+
+  .card__front {
+    background-color: var(--clr);
+    background-size: cover;
+    background-blend-mode: overlay;
+    color: #333;
+  }
+
+
+
+  .card__front::before {
+    content: '';
+    position: absolute;
+    --spacer: 1em;
+    top: var(--spacer);
+    bottom: var(--spacer);
+    left: var(--spacer);
+    right: var(--spacer);
+    border: 3px solid currentColor;
+    transform: var(--level-one);
+  }
+
+  .card-titlee {
+    font-size: 2rem;
+    transform: var(--level-three);
+    order: 2;
+    text-transform: uppercase;
+  }
+
+  .card-subtitlee {
+    transform: var(--level-two);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: var(--fw-bold);
+    opacity: .7;
+
+  }
+
+  .card-textt {
+    transform: var(--level-two);
+    font-weight: var(fw-normal);
+    font-size: 1rem;
+    line-height: 1;
+  }
+  
+
+  .card__back {
+    transform: rotateY(.5turn);
+    {% comment %} color: var(--clr); {% endcomment %}
+    {% comment %} background: #333; {% endcomment %}
+
+
+  }
+
+
+  </style>
+
+
+
+
+
   <body> 
 
 <br/>
@@ -38,28 +142,29 @@
   {% endif %}
 
 <div class="row flex-center">
-{% comment %} <div class="sm-4 col"> {% endcomment %}
- {% comment %} <div class="card" > {% endcomment %}
-  <div class="card" style="width: 20rem;" >  
-  <div class="card-body">
-    <h4 class="card-title"><b>Your Personal Bullet Journal!</b><br/></h4>
-    <h5 class="card-subtitle">Uses:</h5> 
-    <p class="card-text"> Bullet journal, or bullet journaling, 
+  <div class="card card-box" style="width: 20rem;" >  
+  <div class="card-bodyy">
+   <div class="card__front">
+    <h3 class="card-titlee">Your Personal Bullet Journal!</h3>
+    <h5 class="card-subtitlee">Uses:</h5> 
+   </div>
+   <div class="card__back">
+    <p class="card-textt"> Bullet journal, or bullet journaling, 
     is a creative way to schedule your day, week, month, or year.
     A bullet journal is also used to keep track of what you have done or what you haven't.
     Yasss, stay on top of your academics and track mental health-related ideas.</p>
-    <h6>The Creators: <br/> Matthew Morris, Tim La, Wesley Salesberry, Stephanie Guirand</h6>
-   {% comment %} </div> {% endcomment %}
-   {% if user.is_authenticated %}
-     {% comment %} <div class="card" style="width: 20rem;"> {% endcomment %}
-    <div class="card-body"> 
+    <h6 class="card-textt">The Creators: <br/> Matthew Morris, Tim La, Wesley Salesberry, Stephanie Guirand</h6>
+   </div>
+  
+ </div>
+   {% if user.is_authenticated %} 
+    <div class="card-body">
       <h3 class="card-text"> We hope You are enjoying the site!</h3>
     </div>
-    {% comment %} </div> {% endcomment %}
-   {% endif %}
- </div>
+   {% endif %}  
  </div>
   
+    
 
   <div class="sm-4 col journal_image">
   <img
