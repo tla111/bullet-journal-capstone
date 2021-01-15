@@ -1,3 +1,4 @@
+{% load static %}
 {% extends 'base.html' %}
 
 {% block  content%}
@@ -10,11 +11,9 @@
         padding: 10px;
     }
     .display-card{
-        width: 20rem; 
-        background-color: #2e3233; 
         color: #fff;
     }
-      .display-card a{
+    .display-card a{
         color: #fff;
         text-decoration: none;
         transition: all 0.3s ease-in;
@@ -63,6 +62,28 @@
         height: 300px;
         width: 300px;
     }
+    .card-box {
+        position: relative;
+        background: black;
+    }
+    .card-image {
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 370px;
+        width: 330px;
+        background: linear-gradient(135deg, silver, white);
+        transition: 0.5s;
+    }
+    .card:hover .card-image{
+      bottom: 0%;
+    }
+
 </style>
 
 <br/>
@@ -120,31 +141,38 @@
 <div class="container-fluid my-container"> 
      <div class="row flex-center carousel">
         {% for post in results %}
-            <div class="card display-card carousel-item card_container">
-                <a class="card-link" href="/article/{{post.id}}" >
-                <div class="card-body ">
-                   <h4 class="card-title">{{ post.title}}</h4>
-                    <h5 class="card-subtitle">Created by {{ post.author }} {{post.list_date| timesince}} ago</h5>
-                    <p class="card-text">{{post.body|truncatechars:50}}</p>
-                    <hr></a>
-                    {% if post.author.id  != request.user.id %}
-                        <p>Tag: {{post.tags}}</p>
-                        <p> Comments: {{post.comments.count}} </p>
-                    {% else %}
-                        <p>Comments: {{post.comments.count}} </p>
-                        <div class="card_buttons">
-                            <a class="paper-btn btn-danger" popover-top=" ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
-                            <a  class="paper-btn btn-success"  href="/edit_post/{{post.id}}">Edit Post</a>
-                        </div>
-                    {% endif %}
-                </div>
-            </a>
-            </div>
-        {% endfor %}
-        <div class="swiper-pagination"></div>
-    </div>
-</div> 
+        <div class="card carousel-item card_container card-box">
+            <a class="card-link" href="/article/{{post.id}}" >
 
+                <div class="card-body">
+                    <h4 class="card-title">{{ post.title}}</h4>
+                        <h5 class="card-subtitle">Created by {{ post.author }} {{post.list_date| timesince}} ago</h5>
+                        <p class="card-text">{{post.body|truncatechars:50}}</p>
+                        <hr>
+                        {% if post.author.id  != request.user.id %}
+                            <p>Tag: {{post.tags}}</p>
+                            <p> Comments: {{post.comments.count}} </p>
+                        {% else %}
+                            <p>Comments: {{post.comments.count}} </p>
+                            <div class="card_buttons">
+                                <a class="paper-btn btn-danger" popover-top=" ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
+                                <a  class="paper-btn btn-success"  href="/edit_post/{{post.id}}">Edit Post</a>
+                            </div>
+                        {% endif %}
+                        <div class="card-image">
+                            <img
+                            src="{% static 'authentication/journal3.jpeg' %}"
+                            alt="BJM Logo" />
+                        </div>
+                    </div>
+
+                </a>
+            </div>
+            {% endfor %}
+            <div class="swiper-pagination"></div>
+        </div>
+    </div> 
+    
 
 <div class="glide">
   <div class="glide__track" data-glide-el="track">
