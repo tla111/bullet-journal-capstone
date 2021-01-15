@@ -166,8 +166,13 @@
     .hide_skew p {
       background-color: gray;
     }
-
-    
+    .update_button:hover {
+      transition-delay: .2s;
+      color: black;
+      box-shadow: 0 0 10px #0f0,
+      0 0 30px #0f0,
+      0 0 50px #0f0;
+    }
   </style>
 
   <body>  
@@ -197,7 +202,7 @@
 
               <div class='card_img'>
                 <h2>{{user.username}}'s Journal</h2> 
-                <h4 id='assignment_header'>Assignments Need to Complete: {{count}}</h4>
+                <h4 id='assignment_header'>Assignments Created: {{count}}</h4>
               </div>
 
             </div>
@@ -270,7 +275,7 @@
                   <td>{{assignment.assignment_type}}</td>
                   <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
-                    <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
+                    <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline update_button">Update</a>
                   </td>
                 </tr>
                 {%endif%} 
@@ -284,7 +289,7 @@
                   <td>{{assignment.assignment_type}}</td>
                   <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
-                      <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
+                      <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline update_button">Update</a>
                   </td>
                 </tr>
                 {%endif%} 
@@ -298,7 +303,7 @@
                   <td>{{assignment.assignment_type}}</td>
                   <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
-                    <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
+                    <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline update_button">Update</a>
                   </td>
                 </tr>
                 {%endif%} 
@@ -312,7 +317,7 @@
                   <td>{{assignment.assignment_type}}</td>
                   <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
-                    <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
+                    <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline update_button">Update</a>
                   </td>
                 </tr>
                 {%endif%} 
@@ -326,7 +331,7 @@
                   <td>{{assignment.assignment_type}}</td>
                   <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
-                    <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
+                    <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline update_button">Update</a>
                   </td>
                 </tr>
                 {%endif%} 
@@ -340,7 +345,7 @@
                   <td>{{assignment.assignment_type}}</td>
                   <td>{{assignment.date_filed | timesince}} ago</td>
                   <td>
-                    <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline">Update</a>
+                    <a href="/assignment_detail/{{assignment.id}}/" class="paper-btn btn-info-outline update_button">Update</a>
                   </td>
                 </tr>
                 {%endif%} 
@@ -362,17 +367,15 @@
       let post_title = document.querySelector("#post_title")
       let hide_skew = document.querySelectorAll(".hide_skew")
 
-
       mode_button.addEventListener("click", function(){
         document.body.classList.toggle('dark_mode')
         assignments_header.classList.toggle('dark_header')
         motivate_header.classList.toggle('dark_header')
         post_title.classList.toggle('text_white')
         hide_skew.classList.toggle('text_white')
-        
       })
 
-
+      
   </script>
 
   </body>

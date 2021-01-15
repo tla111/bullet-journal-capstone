@@ -37,8 +37,9 @@
     {% endfor %}
 {% endif %}
   <h3>{{title}}</h3>
-  <form method="post">
+  <form method="post" action="" enctype="multipart/form-data">
     {% csrf_token %}
+    {{form.media}}
      {{ form.as_p }}
     <button><input type="submit" value="{{BTN_Text}}" /></button>
   </form>
