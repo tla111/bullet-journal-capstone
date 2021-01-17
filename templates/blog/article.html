@@ -58,14 +58,6 @@ img {
         <h1 class="article-title">{{results.title}}</h1>
         <p class="article-meta">Written by {{results.author|capfirst}} {{results.list_date| timesince}} ago</a></p>
         <p>{{results.body}}</p>
-
-        {% comment %} <div>
-          <a href="/upvote/{{results.id}}/"><i class="fas fa-hand-spock"></i> Like!,  {{results.likes}}</a>
-          <hr>
-          <a href="/downvote/{{results.id}}/"><i class="fas fa-lemon"></i> Dislike!,  {{results.dislikes}}</a>
-        </div> {% endcomment %}
-        {% if post.author.id  != request.user.id %}
-
         {% if post.author.id  != request.user.id %}
         <div>
           <a class="paper-btn btn-info" href="/upvote/{{results.id}}/"><i class="fas fa-hand-spock"></i>Like!,  {{results.likes}}</a>
@@ -73,7 +65,6 @@ img {
           {% comment %} <a class="paper-btn btn-info" href="/downvote/{{results.id}}/"><i class="fas fa-lemon"></i>Dislike!,  {{results.dislikes}}</a> {% endcomment %}
         </div>
         <hr>
-
         <a href="/comment/{{results.id}}/" class="paper-btn btn-info">Make a Comment</a>
         {% comment %} {% endif %} {% endcomment %}
         {% comment %} {% if user.isnot_authenticated%} {% endcomment %}
@@ -91,11 +82,6 @@ img {
                     <h4 class="card-title">{{ post.title}}</h4>
                     <h5 class="card-subtitle">Created by {{ post.author }} {{post.created_date| timesince}} ago</h5>
                     <p class="card-text">{{post.context}}</p>
-                     {% comment %} <div>
-                        <a href="/likecomment/{{post.id}}/"><i class="fas fa-hand-spock"></i> Like!,  {{post.likes}}</a>
-                          <hr>
-                        <a href="/dislikecomment/{{post.id}}/"><i class="fas fa-lemon"></i> Dislike!,  {{post.dislikes}}</a>
-                    </div> {% endcomment %}
                 </div>
             </div>
         {% endfor %}
@@ -105,9 +91,15 @@ img {
     </article>
 </div>
 
+{% if results.blog_image %}
 <img
 src="{{results.blog_image.url}}"
 alt="Blog Image" />
+{% else %}
+<h1>
+No Image
+</h1>
+{% endif %}
 
 
 <script

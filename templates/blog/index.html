@@ -100,24 +100,17 @@
 </div>
 
 <hr/>
-{{toptags}}
+{% comment %} <div>
+{% for tags in toptags  %} 
+.values
+    <ul>
+       {{tags}} {{tags.title}}
+    </ul>
 
-<div class="container" >
-    <div class="border margin-large my-card my-container my-bg">
-        <div class="card-body">
-            <h4 class="card-title" style="color: #fff;">Search For Achievements by Tag</h4>
-            <form action="/search">
-                <div class="row flex-middle">
-                    <div class="col sm-12">
-                        <div class="form-group background-primary">
-                            <input class="input-block" type="text" name="tags" id="paperInputs2" placeholder="Search by Tags" style="color: #fff;">
-                        </div>
-                    </div>
-                </div>
-                <div class="submit-btn">
-                    <button type="submit" class="paper-btn btn-primary" value="Primary">Search</button>
+{% endfor %}
+</div> {% endcomment %}
+
 <br>
-
 <div class="container test_container" >
     <div class="card">
         <h4 class="card-title" style="color: #000;">Search For Achievements by Tag</h4>

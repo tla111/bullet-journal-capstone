@@ -7,11 +7,13 @@ from django.db.models import Count
 
 def blog_index(request):
     results = BlogModel.objects.order_by('-list_date').all()
-    toptags = BlogModel.objects.values_list('tags').annotate(tag_count=Count('tags')).order_by('-tag_count')
+    # toptags = BlogModel.objects.values_list('tags').annotate(tag_count=Count('tags')).order_by('-tag_count')
+    # tags = [char for char in toptags if char.isalnum()]
+    # tags = "".join(tags)
     # print(results.tags)
     context = {
         'results': results,
-        'toptags': toptags,
+        # 'toptags': toptags,
     }
     return render(request, "blog/index.html", context)
 
@@ -137,7 +139,7 @@ def up_vote(request, id):
     post = BlogModel.objects.get(id=id)
     post.likes += 1
     post.save()
-    return redirect('blog')
+    return redirect(f'/article/{id}')
 
 
 # def comment_likes(request, id):
@@ -157,4 +159,4 @@ def down_vote(request, id):
     post = BlogModel.objects.get(id=id)
     post.dislikes += 1
     post.save()
-    return redirect('blog')
+    return redirect(f'/article/{id}')
