@@ -13,6 +13,12 @@
   padding: 50px;
   display: none;
 }
+<<<<<<< HEAD
+
+#fas fa-hand-spock{
+
+}
+=======
 .navbar_box {
   margin-top: 10px;
   margin-left: 10px;
@@ -31,6 +37,7 @@ img {
   height: 95vh;
   width: 45vw;
 }
+
 
 </style>
 
@@ -84,9 +91,15 @@ img {
     </article>
 </div>
 
+{% if results.blog_image %}
 <img
 src="{{results.blog_image.url}}"
 alt="Blog Image" />
+{% else %}
+<h1>
+No Image
+</h1>
+{% endif %}
 
 
 <script

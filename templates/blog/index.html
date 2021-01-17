@@ -98,8 +98,19 @@
         </div>
     {% endif %}
 </div>
-<br>
 
+<hr/>
+{% comment %} <div>
+{% for tags in toptags  %} 
+.values
+    <ul>
+       {{tags}} {{tags.title}}
+    </ul>
+
+{% endfor %}
+</div> {% endcomment %}
+
+<br>
 <div class="container test_container" >
     <div class="card">
         <h4 class="card-title" style="color: #000;">Search For Achievements by Tag</h4>
@@ -108,6 +119,7 @@
                 <div class="col sm-12">
                         <input class="search-input" type="text" name="tags" id="paperInputs2" placeholder="Search by Tags" style="color: #000; font-size: 18px;">
                     <button type="submit" class="paper-btn btn-primary search-button" value="Primary">Search</button>
+
                 </div>
             </div>
         </form>

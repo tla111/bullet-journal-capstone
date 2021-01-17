@@ -7,13 +7,20 @@ class BlogForm(forms.ModelForm):
     class Meta:
         model = BlogModel
         fields = ['title', 'body', 'tags', 'blog_image']
-
+        
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': 'Your Achievement', 'id': "paperInputs2"}),
             'body': forms.Textarea(attrs={'placeholder': 'Enter a description of your achievement here'}),
-            'tags': forms.TextInput(attrs={'placeholder': 'Keywords', 'id': "paperInputs2"}),
+            # 'tags': forms.TextInput(attrs={'placeholder': 'Keywords', 'id': "paperInputs2"}),
         }
-
+        TAG_STATUS_CHOICES = (
+        ('School', 'School'),
+        ('Work','Work'),
+        ('Lifestyle', 'Lifestyle'),
+        ('Organization', 'Organization'),
+        ('Time Management', 'Time Management'), 
+        )
+        tags = forms.ChoiceField(choices=TAG_STATUS_CHOICES)
 
 class CommentForm (forms.ModelForm):
     class Meta:
