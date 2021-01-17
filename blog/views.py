@@ -141,7 +141,6 @@ def up_vote(request, id):
     post.save()
     return redirect(f'/article/{id}')
 
-
 # def comment_likes(request, id):
 #     post = CommentModel.objects.get(id=id)
 #     post.likes += 1
