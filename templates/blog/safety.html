@@ -1,39 +1,35 @@
-<div class="container-fluid my-container"> 
-     <div class="row flex-center carousel">
-        {% for post in results %}
-            <div class="card display-card carousel-item card_container card_box">
-                <a class="card-link" href="/article/{{post.id}}" >
-                    <div class="card-body">
-                    <h4 class="card-title">{{ post.title}}</h4>
-                        <h5 class="card-subtitle">Created by {{ post.author }} {{post.list_date| timesince}} ago</h5>
-                        <p class="card-text">{{post.body|truncatechars:50}}</p>
-                        <hr>
-                        {% if post.author.id  != request.user.id %}
-                            <p>Tag: {{post.tags}}</p>
-                            <p> Comments: {{post.comments.count}} </p>
-                        {% else %}
-                            <p>Comments: {{post.comments.count}} </p>
-                            <div class="card_buttons">
-                                <a class="paper-btn btn-danger" popover-top=" ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
-                                <a  class="paper-btn btn-success"  href="/edit_post/{{post.id}}">Edit Post</a>
-                            </div>
-                        {% endif %}
-                    </div>
-                </a>
-                <div class="card-image">H1</div>
-            </div>
-            {% endfor %}
-            <div class="swiper-pagination"></div>
+ <article class="article">
+        <h1 class="article-title">{{results.title}}</h1>
+        <p class="article-meta">Written by {{results.author|capfirst}} {{results.list_date| timesince}} ago</a></p>
+        <p>{{results.body}}</p>
+        {% if post.author.id  != request.user.id %}
+        <div>
+          <a class="paper-btn btn-info" href="/upvote/{{results.id}}/"><i class="fas fa-hand-spock"></i>Like!,  {{results.likes}}</a>
+          {% comment %} <hr> {% endcomment %}
+          {% comment %} <a class="paper-btn btn-info" href="/downvote/{{results.id}}/"><i class="fas fa-lemon"></i>Dislike!,  {{results.dislikes}}</a> {% endcomment %}
         </div>
-    </div> 
+        <hr>
+        <a href="/comment/{{results.id}}/" class="paper-btn btn-info">Make a Comment</a>
+        {% comment %} {% endif %} {% endcomment %}
+        {% comment %} {% if user.isnot_authenticated%} {% endcomment %}
+        {% else %}
+        <p><i class="fas fa-hand-spock"></i> Likes: {{results.likes}} </p>
+        <hr>
+        {% comment %} <p><i class="fas fa-lemon"></i> Dislikes: {{results.dislikes}} </p> {% endcomment %}
+        {% endif %}
+        <a id="flip" class="paper-btn btn-info"> {{comments.count}} Comment{{comments.count|pluralize}}</a>
+        <div class="container-fluid my-container" id="panel">
+          <div class="row">
+            {% for post in comments %}
+                <div class="card margin-small display-card">
+                      <div class="card-body">
+                          <h4 class="card-title">{{ post.title}}</h4>
+                          <h5 class="card-subtitle">Created by {{ post.author }} {{post.created_date| timesince}} ago</h5>
+                          <p class="card-text">{{post.context}}</p>
+                      </div>
+                  </div>
+              {% endfor %}
+          </div>
+        </div>
 
-
-
-
-
-
-    new Glide('.glide', {
-        type: 'carousel',
-        startAt: 0,
-        perView: 3,
-    }).mount()
+    </article>

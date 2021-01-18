@@ -6,28 +6,21 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
      <link rel="stylesheet" href="https://unpkg.com/papercss@1.8.2/dist/paper.min.css">
-
     <title>Journal</title>
   </head>
-  
   <style>
   :root {
     --level-one: translateZ(3rem);
     --level-two: translateZ(6rem);
     --level-three: translateZ(9rem);
-
     --fw-normal: 400;
     --fw-bold: 700;
-
     --clr: #F5FFFA;
   }
-
   .card-box {
     width: 200px;
   }
-
   .card-bodyy {
     text-align: center;
     position: relative;
@@ -36,11 +29,9 @@
     background: white;
     transform-style: preserve-3d;
   }
-  
   .card-box:hover .card-bodyy {
     transform: rotateY(.5turn);
   }
-
   .card__front,
   .card__back {
     position: absolute;
@@ -54,16 +45,12 @@
     display: grid;
     align-content: center:
   }
-
   .card__front {
     background-color: var(--clr);
     background-size: cover;
     background-blend-mode: overlay;
     color: #333;
   }
-
-
-
   .card__front::before {
     content: '';
     position: absolute;
@@ -75,50 +62,38 @@
     border: 3px solid currentColor;
     transform: var(--level-one);
   }
-
   .card-titlee {
     font-size: 2rem;
     transform: var(--level-three);
     order: 2;
     text-transform: uppercase;
   }
-
   .card-subtitlee {
     transform: var(--level-two);
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: var(--fw-bold);
     opacity: .7;
-
   }
-
   .card-textt {
     transform: var(--level-two);
     font-weight: var(fw-normal);
     font-size: 1rem;
     line-height: 1;
   }
-  
-
   .card__back {
     transform: rotateY(.5turn);
     {% comment %} color: var(--clr); {% endcomment %}
     {% comment %} background: #333; {% endcomment %}
-
-
   }
-
-
+  .pic {
+    float:left;
+    position: relative;
+    left: 150px;
+  }
   </style>
-
-
-
-
-
   <body> 
-
 <br/>
-
 <div class="container">
 <div class="navbar_box">
   {% if user.is_authenticated %} {% csrf_token %}
@@ -126,27 +101,22 @@
    <a href="{% url 'blog' %}" class="paper-btn btn-info">Blog</a>
    <a href="{% url 'logout' %}" class="paper-btn btn-info">Logout</a>
 </div>
-
 <h2>Hi {{ user|capfirst }} Welcome 🤗 !!!</h2>
-
 {% else %}
-
 <div class="navbar_box">
  <a href="{% url 'register' %}" class="paper-btn btn-info"> New User: Sign Up Here!</a>
  <a href="{% url 'login' %}" class="paper-btn btn-info">Login</a>
  <a href="{% url 'blog' %}" class="paper-btn btn-info">Check out Blogs</a>
 </div>
-
   <h2> Life, At Your Own Pace 📓 </h2>
   {% comment %} <h3>🥊 READYYYYYYY To Bullet JOURNALLLLLLL 🥊</h3>  {% endcomment %}
   {% endif %}
-
-<div class="row flex-center">
+<div class="row ">
   <div class="card card-box" style="width: 20rem;" >  
   <div class="card-bodyy">
    <div class="card__front">
     <h3 class="card-titlee">Your Personal Bullet Journal!</h3>
-    <h5 class="card-subtitlee">Uses:</h5> 
+    <h5 class="card-subtitlee">🖱 Mouse over to see 🖱  Uses:</h5> 
    </div>
    <div class="card__back">
     <p class="card-textt"> Bullet journal, or bullet journaling, 
@@ -155,7 +125,6 @@
     Yasss, stay on top of your academics and track mental health-related ideas.</p>
     <h6 class="card-textt">The Creators: <br/> Matthew Morris, Tim La, Wesley Salesberry, Stephanie Guirand</h6>
    </div>
-  
  </div>
    {% if user.is_authenticated %} 
     <div class="card-body">
@@ -163,17 +132,14 @@
     </div>
    {% endif %}  
  </div>
-  
-    
-
-  <div class="sm-4 col journal_image">
+  <div class="sm-4 col journal_image pic">
+  <div class="card" >
   <img
    src="{% static 'authentication/journal3.jpeg' %}"
    alt="BJM Logo" />
   </div>
+  </div>
 </div>
-
-
 <div class="row">
   <div class="col-4 col">
  <div class="card" >
@@ -186,9 +152,6 @@
    </div>
   </div>
  </div>
-
-  
-  
  <div class="col-4 col">
   <div class="card" >
   {% comment %} style="width: 15rem;" {% endcomment %}
@@ -200,8 +163,6 @@
    </div>
   </div>
  </div>
-  
-
   <div class="col-4 col">
    <div class="card" >
    {% comment %} style="width: 15rem;" {% endcomment %}
@@ -213,10 +174,6 @@
     </div>
    </div>
   </div>
-
-
-
-
 </div>
 </body>
 </html>
