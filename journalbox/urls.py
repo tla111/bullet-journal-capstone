@@ -15,7 +15,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from profile_journal.views import JournalPageView, AddAssignmentView, AssignmentDetailView, LessonAssignmentView, ActivityAssignmentView, QuizAssignmentView, AssessmentAssignmentView, CompletedAssignmentView, DeleteAssignmentView, AddReflectionView
-from authentication.views import home, index, register, logout_view
+from authentication.views import home, animation, index, register, logout_view
 from blog import views
 from django.conf.urls import url
 from django.views.static import serve 
@@ -40,7 +40,8 @@ urlpatterns = [
     path('login/', index, name="login"),
     path('register/', register, name="register"),
     path('logout/', logout_view, name="logout"),
-    path('', home, name="home"),
+    path('', animation),
+    path('home/', home, name="home"),
     path('blog/', views.blog_index, name="blog"),
     path('create_post/', views.create_post, name="create_post"),
     path('search/', views.search, name="search"),
@@ -52,9 +53,7 @@ urlpatterns = [
     # path('downvote/<int:id>/', views.down_vote, name="downvote"),
     # path('likecomment/<int:id>/', views.comment_dislikes, name="like"),
     # path('dislikecomment/<int:id>/', views.comment_dislikes, name="dislike"),
-
-
     path('upvote/<int:id>/', views.up_vote, name="upvote"),
-    path('downvote/<int:id>/', views.down_vote, name="downvote"),
+    # path('downvote/<int:id>/', views.down_vote, name="downvote"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -107,10 +107,10 @@ def comment(request, id):
                 context=data['context'],
                 author=request.user
             )
-            return redirect('blog')
+            return redirect(f'/article/{id}')
         else:
             messages.error(request, 'Comment Text Exceeds 280 Characters')
-            return redirect('create_post')
+            return redirect(f'/article/{id}')
     form = CommentForm()
     context = {
         'title': 'Celebrate an Achievement',
@@ -154,8 +154,8 @@ def up_vote(request, id):
 #     post.save()
 #     return redirect('article', id=id)
 
-def down_vote(request, id):
-    post = BlogModel.objects.get(id=id)
-    post.dislikes += 1
-    post.save()
-    return redirect(f'/article/{id}')
+# def down_vote(request, id):
+#     post = BlogModel.objects.get(id=id)
+#     post.dislikes += 1
+#     post.save()
+#     return redirect(f'/article/{id}')
