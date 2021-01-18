@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <style>
   #panel, #flip {
@@ -114,9 +115,10 @@ button, button:hover, button:active {
       class="blog_image"
       />
       {% else %}
-      <h1>
-      No Image
-      </h1>
+      <img
+      src="{% static 'authentication/photo.jpg' %}"
+      alt="Blog Space holder Image"
+      />
       {% endif %}
    </div>
 
