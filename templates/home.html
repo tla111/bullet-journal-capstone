@@ -108,6 +108,13 @@
 
   }
 
+  .pic {
+    float:left;
+    position: relative;
+    left: 150px;
+  }
+
+
 
   </style>
 
@@ -141,12 +148,12 @@
   {% comment %} <h3>🥊 READYYYYYYY To Bullet JOURNALLLLLLL 🥊</h3>  {% endcomment %}
   {% endif %}
 
-<div class="row flex-center">
+<div class="row ">
   <div class="card card-box" style="width: 20rem;" >  
   <div class="card-bodyy">
    <div class="card__front">
     <h3 class="card-titlee">Your Personal Bullet Journal!</h3>
-    <h5 class="card-subtitlee">Uses:</h5> 
+    <h5 class="card-subtitlee">🖱 Mouse over to see 🖱  Uses:</h5> 
    </div>
    <div class="card__back">
     <p class="card-textt"> Bullet journal, or bullet journaling, 
@@ -165,11 +172,12 @@
  </div>
   
     
-
-  <div class="sm-4 col journal_image">
+  <div class="sm-4 col journal_image pic">
+  <div class="card" >
   <img
    src="{% static 'authentication/journal3.jpeg' %}"
    alt="BJM Logo" />
+  </div>
   </div>
 </div>
 

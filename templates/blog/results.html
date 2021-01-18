@@ -32,6 +32,11 @@
     .my-bg{
          background-color: #2E3233;
     }
+
+     .img-card {
+        height: 40px;
+        width: 30px;
+    }
 </style>
 
 <br/>
@@ -83,11 +88,21 @@
                     <p class="card-text">{{post.body|truncatechars:50}}</p>
                     <hr></a>
                     {% if post.author.id  != request.user.id %}
-                        <p>Tags: {{post.tags}}</p>
+                        {% if post.blog_image %}
+                        <img class="img-card" src="{{post.blog_image.url}}"/>
+                        {% endif %}
+                        <br/>
+                        <p>Tag: {{post.tags}}</p>
                         <p><i class="fas fa-hand-spock"></i> Likes: {{post.likes}} </p>
-                        <p><i class="fas fa-lemon"></i> Dislikes: {{post.dislikes}} </p>
                         <p>Comments: {{post.comments.count}} </p>
                     {% else %}
+                        {% if post.blog_image %}
+                        <img class="img-card" src="{{post.blog_image.url}}"/>
+                        {% endif %}
+                        <br/>
+                        <p>Tags: {{post.tags}}</p>
+                        <p><i class="fas fa-hand-spock"></i> Likes: {{post.likes}} </p>
+                        <p>Comments: {{post.comments.count}} </p>
                         <a class="paper-btn btn-danger" popover-top="ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
                         <a class="paper-btn btn-success" href="/edit_post/{{post.id}}">Edit Post</a>
                     {% endif %}

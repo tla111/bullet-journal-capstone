@@ -16,13 +16,15 @@
     .display-card a{
         color: #fff;
         text-decoration: none;
-        transition: all 0.3s ease-in;
+        transition: all 1s ease-in;
+        {% comment %} transition: transform 1s ease-in; {% endcomment %}
     }
     .my-bg{
          background-color: #2E3233;
     }
     .carousel {
         width: 100%;
+        height: 470px;
     }
     .card {
         height: 250px !important;
@@ -35,6 +37,7 @@
     }
     .search-input {
         color: black;
+        
     }
     .col {
         display: flex;
@@ -43,9 +46,10 @@
         align-items: center;
     }
     .card_container {
-        margin-top: -50px;
-        height: 470px !important;
-        width: 325px !important;
+        margin-top: -10px;
+        margin-bottom: 0px;
+        height: 460px !important;
+        width: 330px !important;
         border: 1px solid greenyellow;
     }
     .card_buttons {
@@ -64,21 +68,26 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 460px;
+        height: 500px;
         width: 330px;
-        background: linear-gradient(135deg, blue, red);
+        background: linear-gradient(135deg, #87CEEB, #F5FFFA);
         transition: 0.5s;
     }
     .card:hover .card-image{
       bottom: -30%;
     }
     img {
-        height: 470px;
+        height: 500px;
         width: 330px;
     }
     .navbar_box {
         width: 50%;
         margin-left: 10px;
+    }
+
+    .img-card {
+        height: 40px;
+        width: 30px;
     }
 </style>
 
@@ -127,10 +136,18 @@
                         <p class="card-text">{{post.body|truncatechars:50}}</p>
                         <hr>
                         {% if post.author.id  != request.user.id %}
+                            {% if post.blog_image %}
+                            <img class="img-card" src="{{post.blog_image.url}}"/>
+                            {% endif %}
+                            <br/>
                             <p>Tag: {{post.tags}}</p>
                             <p><i class="fas fa-hand-spock"></i> Likes: {{post.likes}} </p>
                             <p> Comments: {{post.comments.count}} </p>
                         {% else %}
+                        {% if post.blog_image %}
+                        <img class="img-card" src="{{post.blog_image.url}}"/>
+                        {% endif %}
+                        <br/>
                         <p>Tag: {{post.tags}}</p>
                         <p><i class="fas fa-hand-spock"></i> Likes: {{post.likes}} </p>
                         <p>Comments: {{post.comments.count}} </p>

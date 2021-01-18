@@ -62,7 +62,7 @@ def edit_post(request, id):
             post.body = data['body']
             post.tags = data['tags']
             post.save()
-            return redirect('blog')
+            return redirect(f'/article/{id}')
 
     form = BlogForm(instance=post)
     context = {
@@ -102,7 +102,7 @@ def comment(request, id):
                 context=data['context'],
                 author=request.user
             )
-            return redirect('blog')
+            return redirect(f'/article/{id}')
         else:
             messages.error(request, 'Comment Text Exceeds 280 Characters')
             return redirect('create_post')
@@ -119,7 +119,7 @@ def up_vote(request, id):
     post = BlogModel.objects.get(id=id)
     post.likes += 1
     post.save()
-    return redirect('blog')
+    return redirect(f'/article/{id}')
 
 
 def down_vote(request, id):

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <style>
   #panel, #flip {
@@ -18,8 +19,8 @@
   margin-left: 10px;
 }
 img {
-  height: 450px;
-  width: 500px;
+  height: 400px;
+  width: 450px;
 }
 .article_container {
   border: 3px solid blue;
@@ -27,8 +28,8 @@ img {
   width: 100%;
 }
  .col {
-  border: 1px solid red;
-  height: 95vh;
+  {% comment %} border: 1px solid red; {% endcomment %}
+  height: 45vh;
   width: 45vw;
 }
 
@@ -46,6 +47,8 @@ img {
   </div>
 </div>
 
+<div class="row">
+<div class="col-4 col">
 <div class="container margin-center-medium">
     <article class="article">
         <h1 class="article-title">{{results.title}}</h1>
@@ -53,18 +56,13 @@ img {
         <p>{{results.body}}</p>
         {% if post.author.id  != request.user.id %}
         <div>
-          <a class="paper-btn btn-info" href="/upvote/{{results.id}}/"><i class="fas fa-hand-spock"></i>Like!,  {{results.likes}}</a>
-          {% comment %} <hr> {% endcomment %}
-          {% comment %} <a class="paper-btn btn-info" href="/downvote/{{results.id}}/"><i class="fas fa-lemon"></i>Dislike!,  {{results.dislikes}}</a> {% endcomment %}
+          <a class="paper-btn btn-info" href="/upvote/{{results.id}}/"><i class="fas fa-hand-spock"></i>Like!  {{results.likes}}</a>
         </div>
         <hr>
         <a href="/comment/{{results.id}}/" class="paper-btn btn-info">Make a Comment</a>
-        {% comment %} {% endif %} {% endcomment %}
-        {% comment %} {% if user.isnot_authenticated%} {% endcomment %}
         {% else %}
         <p><i class="fas fa-hand-spock"></i> Likes: {{results.likes}} </p>
         <hr>
-        {% comment %} <p><i class="fas fa-lemon"></i> Dislikes: {{results.dislikes}} </p> {% endcomment %}
         {% endif %}
         <a id="flip" class="paper-btn btn-info"> {{comments.count}} Comment{{comments.count|pluralize}}</a>
   <div class="container-fluid my-container" id="panel">
@@ -81,13 +79,25 @@ img {
     </div>
   </div>
 
+
     </article>
 </div>
+</div>
 
+<div class="col-4 col">
+{% if results.blog_image %}
 <img
 src="{{results.blog_image.url}}"
 alt="Blog Image" />
+{% else %}
 
+<img
+src="{% static 'authentication/photo.jpg' %}"
+alt="Blog Space holder Image"
+ />
+{% endif %}
+</div>
+</div>
 
 <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
