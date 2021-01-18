@@ -104,6 +104,31 @@
     transform: rotateY(.5turn);
   }
 
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .navbar_box a{
+    width: 200px;
+    text-align: center;
+  }
+
+ .not_authentication_buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .not_authentication_buttons a {
+    width: 250px;
+  }
+
+  .life-heading {
+    text-align: center;
+  }
 
   </style>
 
@@ -115,8 +140,8 @@
 
 <br/>
 
-<div class="container">
-<div class="navbar_box">
+<div class="container home-container">
+<div class="navbar_box authentication_buttons">
   {% if user.is_authenticated %} {% csrf_token %}
    <a href="{% url 'journal' %}" class="paper-btn btn-info">Your Journal</a>
    <a href="{% url 'blog' %}" class="paper-btn btn-info">Blog</a>
@@ -127,46 +152,45 @@
 
 {% else %}
 
-<div class="navbar_box">
+<div class="navbar_box not_authentication_buttons">
  <a href="{% url 'register' %}" class="paper-btn btn-info"> New User: Sign Up Here!</a>
  <a href="{% url 'login' %}" class="paper-btn btn-info">Login</a>
  <a href="{% url 'blog' %}" class="paper-btn btn-info">Check out Blogs</a>
 </div>
 
-  <h2> Life, At Your Own Pace 📓 </h2>
-  {% comment %} <h3>🥊 READYYYYYYY To Bullet JOURNALLLLLLL 🥊</h3>  {% endcomment %}
-  {% endif %}
-
-<div class="row flex-center">
-  <div class="card card-box" style="width: 20rem;" >  
-  <div class="card-bodyy">
-   <div class="card__front">
-    <h3 class="card-titlee">Your Personal Bullet Journal!</h3>
-    <h5 class="card-subtitlee">Uses:</h5> 
-   </div>
-   <div class="card__back">
-    <p class="card-textt"> Bullet journal, or bullet journaling, 
-    is a creative way to schedule your day, week, month, or year.
-    A bullet journal is also used to keep track of what you have done or what you haven't.
-    Yasss, stay on top of your academics and track mental health-related ideas.</p>
-    <h6 class="card-textt">The Creators: <br/> Matthew Morris, Tim La, Wesley Salesberry, Stephanie Guirand</h6>
-   </div>
+<h2 class="life-heading"> 📓 Life, At Your Own Pace 📓 </h2> 
   
- </div>
-   {% if user.is_authenticated %} 
-    <div class="card-body">
-      <h3 class="card-text"> We hope You are enjoying the site!</h3>
+{% endif %}
+
+<div class="row">
+ <div class="row home-row">
+    <div class="col home-col">
+        <div class="card card-box" style="width: 20rem;" >  
+        <div class="card-bodyy">
+        <div class="card__front">
+          <h3 class="card-titlee">Your Personal Bullet Journal!</h3>
+          <h5 class="card-subtitlee">Hover Me:</h5> 
+        </div>
+        <div class="card__back">
+          <p class="card-textt"> Bullet journal, or bullet journaling, 
+          is a creative way to schedule your day, week, month, or year.
+          A bullet journal is also used to keep track of what you have done or what you haven't.
+          Yasss, stay on top of your academics and track mental health-related ideas.</p>
+          <h6 class="card-textt">The Creators: <br/> Matthew Morris, Tim La, Wesley Salesberry, Stephanie Guirand</h6>
+        </div>
     </div>
-   {% endif %}  
- </div>
-  
-    
 
-  <div class="sm-4 col journal_image">
-  <img
-   src="{% static 'authentication/journal3.jpeg' %}"
-   alt="BJM Logo" />
+      {% if user.is_authenticated %} 
+        <div class="card-body">
+          <h3 class="card-text"> We hope You are enjoying the site!</h3>
+        </div>
+      {% endif %}
+    </div>
+
+   
+
   </div>
+
 </div>
 
 
