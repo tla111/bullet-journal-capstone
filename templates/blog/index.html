@@ -122,6 +122,16 @@
         margin-top: 35px;
         width: 325px;
     }
+    .blog_buttons_container :nth-child(1) {
+        background-color: rgba(255, 0, 0, 0.787);
+        color: white;
+    }
+    .blog_buttons_container :nth-child(2) {
+        background-color: greenyellow;
+    }
+    .blog_buttons_container :nth-child(3) {
+        background-color: dodgerblue;
+    }
 </style>
 
 <br/>
@@ -185,9 +195,9 @@
                         <p class="blog-text">Comments: {{post.comments.count}} </p>
                     </div>
                     <div class="blog_buttons_container">
-                        <a class="paper-btn btn-danger" popover-top=" ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
-                        <a class="paper-btn btn-success"  href="/edit_post/{{post.id}}">Edit Post</a>
-                        <a class="paper-btn btn-secondary" href="/article/{{post.id}}" >View Post</a>
+                        <a class="paper-btn" popover-top=" ARE YOU SURE❓" href="/delete_post/{{post.id}}">Delete</a>
+                        <a class="paper-btn"  href="/edit_post/{{post.id}}">Edit Post</a>
+                        <a class="paper-btn" href="/article/{{post.id}}" >View Post</a>
                     </div>
                     {% endif %}
                     <div class="card-image">
