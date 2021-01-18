@@ -55,7 +55,7 @@
 <div class="contianer-fluid">
     {% if user.is_authenticated %}
         <div class="navbar_box">
-            <a href="/" class="paper-btn btn-info">Home</a>
+            <a href="/home" class="paper-btn btn-info">Home</a>
             <a href="{% url 'journal' %}" class="paper-btn btn-info">Your Journal</a>
             <a href="{% url 'blog' %}" class="paper-btn btn-info">Blog</a>
             <a href="/create_post" class="paper-btn btn-info">Create Post</a>

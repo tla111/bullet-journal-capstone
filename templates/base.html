@@ -22,29 +22,11 @@
   </head>
 
   <style>
-    .dark_mode {
-          background-color: #121212;
-          color: white;
-        }
   </style>
 <body>
 
-
-    {% comment %} <div class="navbar_box">
-      <a href="" class="paper-btn btn-info" id="change_me">Dark Mode</a>
-    </div>  {% endcomment %}
-
     {% block content %}
     {% endblock %}
-
-    <script>
-      let mode_button = document.querySelector("#change_me")
-
-      mode_button.addEventListener("click", function(){
-        document.body.classList.toggle('dark_mode')
-      })
-      
-  </script>
 
 </body>
 
