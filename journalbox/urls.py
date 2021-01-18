@@ -52,9 +52,7 @@ urlpatterns = [
     # path('downvote/<int:id>/', views.down_vote, name="downvote"),
     # path('likecomment/<int:id>/', views.comment_dislikes, name="like"),
     # path('dislikecomment/<int:id>/', views.comment_dislikes, name="dislike"),
-
-
     path('upvote/<int:id>/', views.up_vote, name="upvote"),
-    path('downvote/<int:id>/', views.down_vote, name="downvote"),
+    # path('downvote/<int:id>/', views.down_vote, name="downvote"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

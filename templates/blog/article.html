@@ -13,12 +13,10 @@
   padding: 50px;
   display: none;
 }
-<<<<<<< HEAD
 
 #fas fa-hand-spock{
 
 }
-=======
 .navbar_box {
   margin-top: 10px;
   margin-left: 10px;
@@ -28,16 +26,38 @@ img {
   width: 500px;
 }
 .article_container {
-  border: 3px solid blue;
-  height: 95vh;
+  height: 90vh;
   width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
  .col {
-  border: 1px solid red;
-  height: 95vh;
-  width: 45vw;
+  height: 89vh;
+  width: 49vw;
 }
-
+.image_column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blog_image {
+  border: 2px solid gray;
+  margin-top: -50px;
+  height: 500px;
+  width: 500px;
+}
+.author-text {
+  font-weight: bold;
+  color: #0071de;
+}
+.comment-button {
+  height: 59px;
+  width: 125px;
+  margin-right: 250px !important;
+}
+button, button:hover, button:active {
+  background-color: white !important;
+}
 
 </style>
 
@@ -53,53 +73,55 @@ img {
   </div>
 </div>
 
-<div class="container margin-center-medium">
-    <article class="article">
+<div class="row article_container">
+   <div class="col">
+       <article class="article">
         <h1 class="article-title">{{results.title}}</h1>
-        <p class="article-meta">Written by {{results.author|capfirst}} {{results.list_date| timesince}} ago</a></p>
+        <p class="author-text">Written by {{results.author|capfirst}} {{results.list_date| timesince}} ago</a></p>
         <p>{{results.body}}</p>
         {% if post.author.id  != request.user.id %}
         <div>
-          <a class="paper-btn btn-info" href="/upvote/{{results.id}}/"><i class="fas fa-hand-spock"></i>Like!,  {{results.likes}}</a>
-          {% comment %} <hr> {% endcomment %}
-          {% comment %} <a class="paper-btn btn-info" href="/downvote/{{results.id}}/"><i class="fas fa-lemon"></i>Dislike!,  {{results.dislikes}}</a> {% endcomment %}
+          <a class="paper-btn btn-info" href="/upvote/{{results.id}}/"><i class="fas fa-hand-spock"></i> Likes  {{results.likes}}</a>
         </div>
-        <hr>
+        <br>
         <a href="/comment/{{results.id}}/" class="paper-btn btn-info">Make a Comment</a>
-        {% comment %} {% endif %} {% endcomment %}
-        {% comment %} {% if user.isnot_authenticated%} {% endcomment %}
         {% else %}
-        <p><i class="fas fa-hand-spock"></i> Likes: {{results.likes}} </p>
-        <hr>
-        {% comment %} <p><i class="fas fa-lemon"></i> Dislikes: {{results.dislikes}} </p> {% endcomment %}
+        <button><i class="fas fa-hand-spock"></i> Likes: {{results.likes}} </button>
         {% endif %}
-        <a id="flip" class="paper-btn btn-info"> {{comments.count}} Comment{{comments.count|pluralize}}</a>
-  <div class="container-fluid my-container" id="panel">
-     <div class="row">
-       {% for post in comments %}
-           <div class="card margin-small display-card">
-                <div class="card-body">
-                    <h4 class="card-title">{{ post.title}}</h4>
-                    <h5 class="card-subtitle">Created by {{ post.author }} {{post.created_date| timesince}} ago</h5>
-                    <p class="card-text">{{post.context}}</p>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-  </div>
+        <button id="flip" class="comment-button"> {{comments.count}} Comment{{comments.count|pluralize}}</button>
+        <div class="container-fluid my-container" id="panel">
+          <div class="row">
+            {% for post in comments %}
+                <div class="card margin-small display-card">
+                      <div class="card-body">
+                          <h4 class="card-title">{{ post.title}}</h4>
+                          <h5 class="card-subtitle">Created by {{ post.author }} {{post.created_date| timesince}} ago</h5>
+                          <p class="card-text">{{post.context}}</p>
+                      </div>
+                  </div>
+              {% endfor %}
+          </div>
+        </div>
 
     </article>
+   </div>
+
+   <div class="col image_column">
+      {% if results.blog_image %}
+      <img
+      src="{{results.blog_image.url}}"
+      alt="Blog Image" 
+      class="blog_image"
+      />
+      {% else %}
+      <h1>
+      No Image
+      </h1>
+      {% endif %}
+   </div>
+
 </div>
 
-{% if results.blog_image %}
-<img
-src="{{results.blog_image.url}}"
-alt="Blog Image" />
-{% else %}
-<h1>
-No Image
-</h1>
-{% endif %}
 
 
 <script
