@@ -7,10 +7,11 @@ from django.contrib.auth.forms import UserCreationForm
 from journaluser.models import BulletJournalUser
 from django.contrib import messages
 
-
 def home(request):
     return render(request, 'home.html')
 
+def animation(request):
+    return render(request, 'animation.html')
 
 def index(request):
     if request.method == "POST":

@@ -15,15 +15,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from profile_journal.views import JournalPageView, AddAssignmentView, AssignmentDetailView, LessonAssignmentView, ActivityAssignmentView, QuizAssignmentView, AssessmentAssignmentView, CompletedAssignmentView, DeleteAssignmentView, AddReflectionView
-from authentication.views import home, index, register, logout_view
+from authentication.views import home, animation, index, register, logout_view
 from blog import views
 from django.conf.urls import url
 from django.views.static import serve 
 from django.conf import settings
 from django.conf.urls.static import static
+# from django.conf.urls.media import media
 
 urlpatterns = [
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}),
     path('auth/', include('authentication.urls')),
     path('journal/', JournalPageView.as_view(), name='journal'),
     path('add_assignment/', AddAssignmentView.as_view()),
@@ -40,7 +42,8 @@ urlpatterns = [
     path('login/', index, name="login"),
     path('register/', register, name="register"),
     path('logout/', logout_view, name="logout"),
-    path('', home, name="home"),
+    path('', animation),
+    path('home/', home, name="home"),
     path('blog/', views.blog_index, name="blog"),
     path('create_post/', views.create_post, name="create_post"),
     path('search/', views.search, name="search"),
@@ -48,6 +51,11 @@ urlpatterns = [
     path('delete_post/<int:id>/', views.delete_post, name="delete_post"),
     path('comment/<int:id>/', views.comment, name="comment"),
     path('article/<int:id>/', views.article, name="article"),
+    # path('upvote/<int:id>/', views.up_vote, name="upvote"),
+    # path('downvote/<int:id>/', views.down_vote, name="downvote"),
+    # path('likecomment/<int:id>/', views.comment_dislikes, name="like"),
+    # path('dislikecomment/<int:id>/', views.comment_dislikes, name="dislike"),
     path('upvote/<int:id>/', views.up_vote, name="upvote"),
-    path('downvote/<int:id>/', views.down_vote, name="downvote"),
+    # path('downvote/<int:id>/', views.down_vote, name="downvote"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
