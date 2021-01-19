@@ -59,6 +59,9 @@ img {
 button, button:hover, button:active {
   background-color: white !important;
 }
+.comment-margin {
+  margin-left: 50px !important;
+}
 
 </style>
 
@@ -87,7 +90,7 @@ button, button:hover, button:active {
         <br>
         <a href="/comment/{{results.id}}/" class="paper-btn btn-info">Make a Comment</a>
         {% else %}
-        <button><i class="fas fa-hand-spock"></i> Likes: {{results.likes}} </button>
+        <i class="fas fa-hand-spock"></i> Likes: {{results.likes}} 
         {% endif %}
         <button id="flip" class="comment-button"> {{comments.count}} Comment{{comments.count|pluralize}}</button>
         <div class="container-fluid my-container" id="panel">
