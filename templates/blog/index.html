@@ -101,7 +101,7 @@
     }
     .blog_buttons_container {
         display: flex;
-        margin-top: 50px;
+        margin-top: 35px;
     }
     .blog_buttons_container a {
         width: 125px;
@@ -121,7 +121,7 @@
     .view_post_button {
         text-align: center;
         font-size: 24px;
-        margin-top: 50px;
+        margin-top: 55px;
         width: 325px;
     }
     .blog_buttons_container :nth-child(1) {
@@ -186,7 +186,7 @@
                     <h5 class="card-subtitle">By: {{ post.author }}</h5>
                     <h5 class="card-subtitle">Created: {{post.list_date| timesince}} ago</h5>
                     <br>
-                    <p class="post-text blog-text">{{post.body|truncatechars:20}}</p>
+                    <p class="post-text blog-text">{{post.body|truncatechars:30}}</p>
                     {% if post.author.id  != request.user.id %}
                         <p class="blog-tag blog-text">Tag: {{post.tags}}</p>
                         <div class="likes_comments">

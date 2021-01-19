@@ -36,7 +36,7 @@ def create_post(request):
             return redirect('create_post')
     form = BlogForm()
     context = {
-        'title': 'Celebrate an Achievement',
+        'title': 'How Do You Use the Bullet Journal?',
         "BTN_Text": 'Post it!',
         'form': form
     }
