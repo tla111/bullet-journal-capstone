@@ -1,1 +1,1 @@
-gunicorn journalbox.wsgi —log-file - 
+web: gunicorn journalbox.wsgi —log-file - 
