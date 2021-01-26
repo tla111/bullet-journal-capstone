@@ -32,7 +32,7 @@ SECRET_KEY = str(os.getenv("SECRET_KEY"))
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = False
-DEBUG404 = True
+# DEBUG404 = True
 
 ALLOWED_HOSTS = ['https://bullet-journal-2021.herokuapp.com/', '127.0.0.1']
 # ALLOWED_HOSTS = ['*']
