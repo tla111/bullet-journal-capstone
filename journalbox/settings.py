@@ -23,7 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 import os
 SECRET_KEY = str(os.getenv("SECRET_KEY"))
-# SECRET_KEY = "citbp9&pl!vn&&s8-6k9j2v8jj16wx&%bo7^k&2g$*8r!i+y5c"
 
 
 # DELETE IF I AM DOING .ENV
@@ -35,13 +34,15 @@ SECRET_KEY = str(os.getenv("SECRET_KEY"))
 DEBUG = False
 DEBUG404 = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://bullet-journal-2021.herokuapp.com/', '127.0.0.1']
+# ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ["localhost"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -143,6 +144,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 LOGIN_URL = '/authentication/login/'
 AUTH_USER_MODEL = "journaluser.BulletJournalUser"
