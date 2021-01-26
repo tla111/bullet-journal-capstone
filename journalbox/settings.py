@@ -22,7 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 import os
-SECRET_KEY = str(os.getenv("SECRET_KEY"))
+# SECRET_KEY = str(os.getenv("SECRET_KEY"))
+SECRET_KEY = 'citbp9&pl!vn&&s8-6k9j2v8jj16wx&%bo7^k&2g$*8r!i+y5c'
 
 
 # DELETE IF I AM DOING .ENV
@@ -56,7 +57,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
